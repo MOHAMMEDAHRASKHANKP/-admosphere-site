@@ -389,7 +389,13 @@
    ============================================================ */
 
 @media (max-width: 768px) {
-  .hero { padding: 110px 24px 80px; }
+  .hero { padding: 90px 24px 60px; min-height: 80vh; }
+
+  .hero-container {
+    justify-content: flex-start;
+    margin-top: 40px;
+    min-height: auto;
+  }
 
   .hero h1 {
     font-size: clamp(42px, 11vw, 64px);

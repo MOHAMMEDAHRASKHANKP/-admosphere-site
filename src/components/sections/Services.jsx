@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 
 import Magnetic from "../ui/Magnetic";
 
+import { FiArrowUpRight } from 'react-icons/fi';
+
 function ServiceCard({
   service,
   index,
@@ -108,7 +110,7 @@ function ServiceCard({
                 stiffness: 320,
               }}
             >
-              ↗
+              <FiArrowUpRight />
             </motion.a>
           </div>
         </motion.div>
