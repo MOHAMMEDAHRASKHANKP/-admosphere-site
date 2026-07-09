@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto:wght@300;400;500&family=Syne:wght@600;700;800&display=swap');
+
+:root{
+  --cream:#f8ecd4;
+  --paper:#fff7e8;
+  --red:#a60304;
+  --bright:#d12121;
+  --ink:#151311;
+  --muted:#6b6259;
+  --line:rgba(21,19,17,.14);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Inter,sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+html,
+body,
+#root{
+  min-height:100%;
+}
+
+body{
+  position:relative;
+  overflow-x:hidden;
+}
+
+#root{
+  position:relative;
+  isolation:isolate;
+}
+
+main,
+nav,
+footer{
+  position:relative;
+  z-index:2;
+}
+
+.ambient-lighting{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.ambient-blob{
+  position:absolute;
+  width:900px;
+  height:900px;
+  border-radius:50%;
+  filter:blur(140px);
+  opacity:.22;
+  will-change:transform;
+  transform:translate3d(0,0,0);
+}
+
+.ambient-blob-one{
+  background:radial-gradient(
+    circle,
+    rgba(209,33,33,.22) 0%,
+    rgba(209,33,33,.12) 35%,
+    transparent 72%
+  );
+
+  top:-320px;
+  left:-250px;
+}
+
+.ambient-blob-two{
+  background:radial-gradient(
+    circle,
+    rgba(255,255,255,.35) 0%,
+    rgba(255,255,255,.08) 38%,
+    transparent 72%
+  );
+
+  right:-260px;
+  bottom:-340px;
+}
+
+@media (prefers-reduced-motion:reduce){
+
+  .ambient-lighting{
+    display:none;
+  }
+
+}

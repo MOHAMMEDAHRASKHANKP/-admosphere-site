@@ -1,0 +1,278 @@
+/* ============================================================
+   NAVBAR — ADMOSPHERE
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 18px;
+  left: 8px;
+  right: 8px;
+  height: 68px;
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 999px;
+  background: rgba(255,255,255,.44);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.48);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+  z-index: 1000;
+
+  transition:
+    background .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease,
+    top .35s ease;
+}
+
+/* ============================================================
+   SCROLLED STATE — fixed: removed broken translateX(-50%)
+   ============================================================ */
+
+.navbar-scrolled {
+  top: 14px;
+  background: rgba(252,248,242,.88);
+  border-color: rgba(255,255,255,.64);
+  box-shadow: 0 20px 56px rgba(0,0,0,.11);
+}
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  flex-shrink: 0;
+  transition: transform .35s ease;
+}
+
+.brand:hover { transform: translateY(-1px); }
+
+.brand-logo {
+  width: 32px;
+  height: auto;
+  transition: transform .4s ease;
+}
+
+.brand:hover .brand-logo {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+/* ============================================================
+   NAV LINKS — centered in the flex row
+   ============================================================ */
+
+.navlinks {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 44px;
+}
+
+.navlinks a {
+  position: relative;
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color .3s ease, transform .3s ease;
+}
+
+.navlinks a:hover {
+  color: #a60304;
+  transform: translateY(-2px);
+}
+
+.navlinks a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: #a60304;
+  transition: width .3s ease;
+}
+
+.navlinks a:hover::after { width: 100%; }
+
+/* ============================================================
+   CTA BUTTON
+   ============================================================ */
+
+.pill.small {
+  flex-shrink: 0;
+  height: 44px;
+  min-width: unset;
+  padding: 0 22px;
+  font-size: 13px;
+  margin-left: 12px;
+}
+
+/* ============================================================
+   MOBILE TOGGLE — hidden by default, shown on mobile
+   ============================================================ */
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,.62);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #111;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: auto;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  transition: transform .3s ease, background .3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.06);
+  background: rgba(255,255,255,.82);
+}
+
+/* ============================================================
+   MOBILE MENU DROPDOWN
+   ============================================================ */
+
+.mobile-menu {
+  position: fixed;
+  top: 98px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  border-radius: 26px;
+  background: rgba(255, 250, 245, 0.35);
+  backdrop-filter: blur(40px) saturate(140%);
+  -webkit-backdrop-filter: blur(40px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 30px 80px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  z-index: 999;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #111;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 16px;
+  border-radius: 14px;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+
+.mobile-menu a:hover {
+  background: rgba(166,3,4,.06);
+  color: #a60304;
+  transform: translateX(4px);
+}
+
+.mobile-menu a.pill {
+  margin-top: 8px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  height: 52px;
+  min-width: unset;
+  padding: 0 24px;
+  font-size: 14px;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .navbar { padding: 0 22px; }
+  .navlinks { gap: 28px; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE BREAKPOINT (900px)
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .navbar { height: 62px; }
+  .navlinks { display: none; }
+  .pill.small { display: none; }
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE (768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .navbar {
+    top: 14px;
+    left: 12px;
+    right: 12px;
+    height: 58px;
+    padding: 0 18px;
+  }
+
+  .brand { font-size: 14px; gap: 10px; }
+  .brand-logo { width: 28px; }
+
+  .mobile-menu {
+    top: 84px;
+    padding: 20px;
+    left: 12px;
+    right: 12px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — EXTRA SMALL (480px)
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .navbar {
+    border-radius: 22px;
+    height: 56px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .brand {
+    letter-spacing: .08em;
+    font-size: 13px;
+  }
+
+  .brand-logo { width: 26px; }
+
+  .mobile-menu {
+    top: 80px;
+    left: 10px;
+    right: 10px;
+    border-radius: 20px;
+  }
+}

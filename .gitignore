@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output — always build fresh on deploy
+dist/
+
+# Logs
+*.log
+vite-error.log
+vite.log
+
+# Environment variables (never commit secrets)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Browser profile data (accidentally copied in)
+.edge-cdp/
+.edge-profile/
+
+# Vite cache
+.vite/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Snapshots (if not needed publicly)
+.snapshots/

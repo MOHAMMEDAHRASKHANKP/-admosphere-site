@@ -1,0 +1,342 @@
+/* ============================================================
+   WHY ADMOSPHERE
+   ============================================================ */
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+
+.section-header {
+  margin-bottom: 72px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #a60304;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: Syne, sans-serif;
+  font-size: clamp(38px, 5vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  margin: 0 0 22px;
+  color: #151311;
+}
+
+.section-description {
+  font-size: 17px;
+  color: #6b6259;
+  line-height: 1.8;
+  max-width: 540px;
+  margin: 0;
+}
+
+/* ============================================================
+   SECTION LAYOUT
+   ============================================================ */
+
+.why-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.why-left {
+  position: sticky;
+  top: 130px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================================================
+   STATS VISUAL — replaces the orbit rings
+   ============================================================ */
+
+.stats-visual {
+  position: relative;
+  width: 380px;
+  height: 440px;
+}
+
+/* Ambient glow behind the cards */
+.stats-bg-glow {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(166,3,4,.1), transparent 70%);
+  filter: blur(38px);
+  pointer-events: none;
+}
+
+/* ============================================================
+   STAT CARDS
+   ============================================================ */
+
+.stat-card {
+  position: absolute;
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.8);
+  border: 1px solid rgba(255,255,255,.98);
+  box-shadow:
+    0 16px 48px rgba(0,0,0,.08),
+    inset 0 1px 0 #fff;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  min-width: 172px;
+  cursor: default;
+  user-select: none;
+}
+
+/* Position + individual float animation per card */
+.stat-card-1 {
+  top: 20px;
+  right: 0;
+  animation: statFloat1 5s ease-in-out infinite;
+}
+
+.stat-card-2 {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation: statFloat2 6.5s ease-in-out infinite;
+}
+
+.stat-card-3 {
+  bottom: 20px;
+  right: 24px;
+  animation: statFloat3 4.8s ease-in-out infinite;
+}
+
+@keyframes statFloat1 {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes statFloat2 {
+  0%, 100% { transform: translateY(-50%); }
+  50%       { transform: translateY(calc(-50% - 10px)); }
+}
+
+@keyframes statFloat3 {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-9px); }
+}
+
+/* Card inner elements */
+.stat-icon {
+  font-size: 20px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-family: Syne, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  color: #a60304;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #6b6259;
+  font-weight: 600;
+  letter-spacing: .02em;
+  line-height: 1.4;
+}
+
+/* Live indicator dot (top-right of each card) */
+.stat-pulse {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a60304;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(166,3,4,.42); }
+  50%       { box-shadow: 0 0 0 7px rgba(166,3,4,0); }
+}
+
+/* ============================================================
+   CENTER BADGE
+   ============================================================ */
+
+.stats-center-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.stats-badge-ring {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(166,3,4,.22);
+  animation: badgeSpin 22s linear infinite;
+}
+
+@keyframes badgeSpin {
+  to { transform: rotate(360deg); }
+}
+
+.stats-badge-inner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff, #fff7e8);
+  border: 1px solid rgba(166,3,4,.16);
+  box-shadow:
+    0 8px 32px rgba(166,3,4,.1),
+    inset 0 1px 0 #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.stats-badge-inner span {
+  font-size: 6px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #a60304;
+  font-weight: 700;
+}
+
+.stats-badge-inner strong {
+  font-family: Syne, sans-serif;
+  font-size: 10px;
+  color: #111;
+  letter-spacing: .06em;
+  font-weight: 800;
+}
+
+/* ============================================================
+   RIGHT COLUMN — PRINCIPLE LIST
+   ============================================================ */
+
+.why-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.principle {
+  padding: 48px 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  transition: transform .35s ease;
+}
+
+.principle:first-child { padding-top: 0; }
+
+.principle:hover { transform: translateX(12px); }
+
+.principle-number {
+  display: block;
+  color: #a60304;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  margin-bottom: 16px;
+}
+
+.principle h3 {
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  margin: 0 0 16px;
+}
+
+.principle p {
+  max-width: 520px;
+  color: #6b6259;
+  line-height: 1.85;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .why-layout {
+    grid-template-columns: 1fr;
+    gap: 70px;
+  }
+
+  .why-left {
+    position: relative;
+    top: 0;
+  }
+
+  .stats-visual {
+    width: 320px;
+    height: 360px;
+    margin: auto;
+  }
+
+  .stat-value    { font-size: 26px; }
+  .stat-card     { min-width: 148px; }
+  .stat-card-1   { right: 6px; }
+  .stat-card-3   { right: 16px; }
+
+  .principle h3  { font-size: 26px; }
+  .principle p   { font-size: 15px; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .principle { padding: 36px 0; }
+
+  .stats-visual {
+    width: 100%;
+    max-width: 280px;
+    height: 310px;
+    margin: 0 auto;
+  }
+
+  .stat-card     { min-width: 136px; padding: 14px 16px; }
+  .stat-value    { font-size: 22px; }
+  .stat-icon     { font-size: 18px; margin-bottom: 8px; }
+  .stat-card-2   { left: -4px; }
+
+  .section-title br { display: none; }
+}
+
+/* ============================================================
+   RESPONSIVE — EXTRA SMALL (480px)
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .stats-visual {
+    height: 260px;
+    transform: scale(0.9);
+  }
+
+  .stat-card-1 { right: -10px; top: 10px; }
+  .stat-card-3 { right: 0px; bottom: 10px; }
+  .stat-card-2 { left: -10px; }
+  
+  .principle h3 { font-size: 22px; }
+  .principle p { font-size: 14px; }
+}

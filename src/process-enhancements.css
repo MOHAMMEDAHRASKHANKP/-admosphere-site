@@ -1,0 +1,112 @@
+.process .steps {
+  border: 0;
+  gap: 16px;
+  perspective: 1200px;
+}
+
+.process .step {
+  position: relative;
+  overflow: hidden;
+  min-height: 222px;
+  padding: 30px 26px;
+  border: 1px solid rgba(255, 255, 255, .76);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255, 247, 232, .68), rgba(236, 196, 159, .24));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 18px 45px rgba(87, 38, 24, .09);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  transition: border-color .25s, box-shadow .25s, background .25s;
+}
+
+.process .step::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, .8), transparent 36%);
+  opacity: 0;
+  transition: opacity .25s;
+  pointer-events: none;
+}
+
+.process .step::after {
+  content: '';
+  position: absolute;
+  right: -46px;
+  top: -46px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(166, 3, 4, .08);
+  transition: transform .35s, opacity .35s;
+}
+
+.process .step:hover {
+  border-color: rgba(166, 3, 4, .28);
+  background: linear-gradient(145deg, rgba(255, 247, 232, .82), rgba(239, 108, 93, .12));
+  box-shadow: inset 0 1px 0 #fff, 0 28px 70px rgba(87, 38, 24, .16);
+}
+
+.process .step:hover::before {
+  opacity: 1;
+}
+
+.process .step:hover::after {
+  transform: scale(1.45);
+  opacity: .72;
+}
+
+.process .step span,
+.process .step h3,
+.process .step p {
+  position: relative;
+  z-index: 1;
+}
+
+.process .step span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .44);
+  border: 1px solid rgba(166, 3, 4, .1);
+  font: 700 10px Syne, sans-serif;
+  letter-spacing: .12em;
+}
+
+.process .step h3 {
+  margin-top: 48px;
+  font-size: 28px;
+  letter-spacing: -.03em;
+}
+
+.process .step p {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.brand {
+  gap: 10px;
+}
+
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 800px) {
+  .process .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .process .step {
+    min-height: 170px;
+  }
+
+  .process .step h3 {
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,496 @@
+/* ============================================================
+   PROCESS VISUAL — Google Analytics / Ads style dashboard
+   ============================================================ */
+
+.pv-shell {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #dadce0;
+  box-shadow:
+    0 1px 2px rgba(60,64,67,.08),
+    0 4px 16px rgba(60,64,67,.10),
+    0 24px 64px rgba(60,64,67,.12);
+  font-family: 'Google Sans', Roboto, 'Inter', sans-serif;
+  color: #202124;
+  position: relative;
+}
+
+/* ============================================================
+   BROWSER CHROME BAR
+   ============================================================ */
+
+.pv-chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #f1f3f4;
+  border-bottom: 1px solid #dadce0;
+}
+
+.pv-chrome-dots {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.pv-chrome-dots i {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.pv-chrome-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 10px;
+  color: #5f6368;
+  letter-spacing: .01em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.pv-chrome-lock { font-size: 9px; }
+
+.pv-chrome-refresh {
+  font-size: 14px;
+  color: #5f6368;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   GOOGLE TOP NAV
+   ============================================================ */
+
+.pv-gnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.pv-gnav-logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.pv-g-letter {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pv-gnav-product {
+  font-size: 12px;
+  font-weight: 500;
+  color: #5f6368;
+  margin-left: 2px;
+  letter-spacing: .01em;
+}
+
+.pv-gnav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Live chip */
+.pv-live-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e6f4ea;
+  border: 1px solid #ceead6;
+  font-size: 10px;
+  font-weight: 700;
+  color: #137333;
+  letter-spacing: .06em;
+}
+
+.pv-live-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34a853;
+  animation: pvPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pvPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52,168,83,.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(52,168,83,0); }
+}
+
+/* Avatar */
+.pv-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   PLATFORM TAB BAR
+   ============================================================ */
+
+.pv-tabs {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e8eaed;
+  padding: 0 16px;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.pv-tabs::-webkit-scrollbar { display: none; }
+
+.pv-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  color: #5f6368;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  transition: color .2s ease, border-color .2s ease;
+  flex-shrink: 0;
+}
+
+.pv-tab:hover { color: #202124; background: rgba(0,0,0,.04); border-radius: 4px 4px 0 0; }
+
+.pv-tab.active { font-weight: 700; }
+
+.pv-tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 800;
+  background: #f1f3f4;
+  color: #5f6368;
+  transition: background .2s, color .2s;
+}
+
+/* Date range pill — pushed to right */
+.pv-daterange {
+  margin-left: auto;
+  font-size: 10px;
+  color: #5f6368;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #dadce0;
+  cursor: default;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   METRIC CARDS
+   ============================================================ */
+
+.pv-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid #e8eaed;
+}
+
+.pv-metric {
+  padding: 14px 16px;
+  border-right: 1px solid #e8eaed;
+  transition: background .2s ease;
+  cursor: default;
+}
+
+.pv-metric:last-child { border-right: none; }
+
+.pv-metric:hover { background: #f8f9fa; }
+
+.pv-metric-label {
+  font-size: 10px;
+  color: #5f6368;
+  font-weight: 500;
+  letter-spacing: .03em;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pv-metric-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #202124;
+  letter-spacing: -.02em;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.pv-metric-trend {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.pv-metric-trend.up { color: #137333; }
+.pv-metric-trend.dn { color: #c5221f; }
+
+/* ============================================================
+   SVG LINE CHART
+   ============================================================ */
+
+.pv-chart {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.pv-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.pv-chart-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #3c4043;
+}
+
+.pv-chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.pv-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.pv-svg {
+  display: block;
+  width: 100%;
+  height: 96px;
+  overflow: visible;
+}
+
+.pv-chart-x {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.pv-chart-x span {
+  font-size: 9px;
+  color: #9aa0a6;
+  font-weight: 500;
+}
+
+/* ============================================================
+   REALTIME STRIP — like GA4 Realtime view
+   ============================================================ */
+
+.pv-realtime {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.pv-rt-left {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.pv-rt-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34a853;
+  box-shadow: 0 0 0 0 rgba(52,168,83,.5);
+  animation: pvPulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.pv-rt-num {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #202124;
+  letter-spacing: -.03em;
+  line-height: 1;
+  transition: all .4s ease;
+}
+
+.pv-rt-label {
+  font-size: 11px;
+  color: #5f6368;
+  font-weight: 500;
+}
+
+/* Top pages */
+.pv-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pv-page {
+  display: grid;
+  grid-template-columns: 88px 1fr 24px;
+  align-items: center;
+  gap: 8px;
+}
+
+.pv-page-name {
+  font-size: 10px;
+  color: #3c4043;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pv-page-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #f1f3f4;
+  overflow: hidden;
+}
+
+.pv-page-fill {
+  height: 100%;
+  border-radius: 999px;
+  opacity: .72;
+}
+
+.pv-page-n {
+  font-size: 10px;
+  color: #5f6368;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ============================================================
+   FOOTER — platform status
+   ============================================================ */
+
+.pv-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f8f9fa;
+  flex-wrap: wrap;
+}
+
+.pv-platform-chips {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.pv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid #dadce0;
+  background: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  color: #3c4043;
+  letter-spacing: .03em;
+  white-space: nowrap;
+}
+
+.pv-chip-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Sync indicator */
+.pv-sync {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  color: #9aa0a6;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pv-sync-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #34a853;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .pv-metrics { grid-template-columns: repeat(2, 1fr); }
+  .pv-metric:nth-child(2) { border-right: none; }
+  .pv-metric:nth-child(3) { border-top: 1px solid #e8eaed; }
+  .pv-metric:nth-child(4) { border-top: 1px solid #e8eaed; border-right: none; }
+}
+
+@media (max-width: 900px) {
+  .pv-daterange { display: none; }
+  .pv-chrome-bar { display: none; }
+  .pv-tab { padding: 8px 10px; font-size: 10px; }
+}
+
+@media (max-width: 640px) {
+  .pv-gnav-product { display: none; }
+  .pv-metric-value  { font-size: 15px; }
+  .pv-metric        { padding: 10px 12px; }
+  .pv-footer        { gap: 6px; }
+  .pv-platform-chips { gap: 4px; }
+
+  .pv-page {
+    grid-template-columns: 70px 1fr 20px;
+    gap: 5px;
+  }
+}

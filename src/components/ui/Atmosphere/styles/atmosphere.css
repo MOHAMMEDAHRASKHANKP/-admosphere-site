@@ -1,0 +1,60 @@
+.atmosphere-engine {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+
+  isolation: isolate;
+}
+
+.atmosphere-layer {
+  position: absolute;
+
+  width: 55vw;
+  height: 55vw;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  opacity: 0.8;
+
+  mix-blend-mode: screen;
+
+  will-change: transform;
+
+  transform: translate3d(0, 0, 0);
+}
+
+/* ---------- Individual Aurora Layers ---------- */
+
+.layer-1 {
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, #ff3b3b 0%, transparent 70%);
+}
+
+.layer-2 {
+  top: 5%;
+  right: -15%;
+  background: radial-gradient(circle, #ff8a3d 0%, transparent 70%);
+}
+
+.layer-3 {
+  bottom: -15%;
+  left: 20%;
+  background: radial-gradient(circle, #d61f1f 0%, transparent 70%);
+}
+
+.layer-4 {
+  bottom: -10%;
+  right: -10%;
+  background: radial-gradient(circle, #ff5252 0%, transparent 70%);
+}
+
+.layer-5 {
+  top: 35%;
+  left: 35%;
+  background: radial-gradient(circle, #ff6666 0%, transparent 70%);
+}
