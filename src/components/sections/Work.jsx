@@ -73,7 +73,7 @@ function Work({ Reveal }) {
               data-cursor="work"
               initial={{ opacity: 0, y: 52, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.12 }}
+              viewport={{ once: false, amount: 0.12 }}
               transition={{
                 duration: 0.72,
                 delay: i * 0.12,

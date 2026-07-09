@@ -234,7 +234,7 @@ export default function PlatformsVisual() {
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: false, amount: 0.1 }}
             whileHover={{
               y: -6,
               boxShadow: `0 16px 40px ${p.ring}, 0 0 0 1.5px ${p.color}44`,

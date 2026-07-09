@@ -60,7 +60,7 @@ export default function WhyAdmosphere() {
                 className="principle"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
+                viewport={{ once: false, amount: 0.4 }}
                 transition={{
                   duration: 0.6,
                   delay: index * 0.12,

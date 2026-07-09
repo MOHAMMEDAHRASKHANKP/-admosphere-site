@@ -35,7 +35,7 @@ export default function GrowthEngine() {
           className={`stat-card stat-card-${i + 1}`}
           initial={{ opacity: 0, scale: 0.88, y: 24 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: false, amount: 0.25 }}
           transition={{
             duration: 0.68,
             delay: stat.delay,
