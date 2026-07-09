@@ -227,7 +227,7 @@
   font-size: 15px;
   font-weight: 600;
   letter-spacing: .02em;
-  box-shadow: 0 16px 42px rgba(166,3,4,.24);
+  box-shadow: none;
   cursor: pointer;
   transition:
     transform .45s cubic-bezier(.22,1,.36,1),
@@ -236,7 +236,7 @@
 
 .pill:hover {
   transform: translateY(-4px);
-  box-shadow: 0 26px 60px rgba(166,3,4,.34);
+  box-shadow: none;
 }
 
 /* ============================================================
