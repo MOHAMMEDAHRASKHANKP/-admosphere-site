@@ -275,4 +275,26 @@
     grid-template-columns: 1fr !important;
     gap: 16px;
   }
+  .bento {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px !important;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .bento::-webkit-scrollbar {
+    display: none;
+  }
+  .bento .service {
+    flex: 0 0 82vw !important;
+    scroll-snap-align: center;
+  }
+  .cinema-marquee {
+    top: 30px !important;
+  }
+  .cinema-center {
+    padding-top: 130px !important;
+  }
 }
