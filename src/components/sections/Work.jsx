@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 const projects = [
   {
@@ -115,7 +116,7 @@ function Work({ Reveal }) {
         <Reveal className="work-footer">
           <a href="#contact" className="work-cta">
             Start your project
-            <span className="work-cta-arrow">↗</span>
+            <span className="work-cta-arrow" style={{ display: 'inline-flex', alignItems: 'center' }}><FiArrowUpRight /></span>
           </a>
         </Reveal>
 

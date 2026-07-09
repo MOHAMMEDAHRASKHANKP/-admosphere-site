@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 function Footer({ Reveal }) {
   const footerWords = [
@@ -79,7 +80,7 @@ function Footer({ Reveal }) {
             href="https://mail.google.com/mail/?view=cm&fs=1&to=admosphere.digital@gmail.com"
             className="primary"
           >
-            Start a project ↗
+            Start a project <FiArrowUpRight style={{ marginLeft: '6px' }} />
           </MagneticLink>
 
           <MagneticLink href="#services">

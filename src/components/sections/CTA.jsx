@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 function CTA({ Reveal }) {
   return (
@@ -57,11 +58,12 @@ function CTA({ Reveal }) {
             className="cta-arrow"
             variants={{
               rest: { x: 0, rotate: 0 },
-              hover: { x: 5, rotate: -45 },
+              hover: { x: 5, rotate: 45 },
             }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            ↗
+            <FiArrowUpRight />
           </motion.span>
         </motion.a>
       </Reveal>

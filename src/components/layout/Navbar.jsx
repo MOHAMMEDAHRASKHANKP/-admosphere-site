@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineMenuAlt3, HiX } from 'react-icons/hi';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 import logoMark from '../../../1000202446-red.png';
 
@@ -82,7 +83,7 @@ function Navbar() {
   href="#contact"
   className="pill small"
 >
-  Start a project ↗
+  Start a project <FiArrowUpRight />
 </a>
 
 <button
@@ -128,7 +129,7 @@ function Navbar() {
               className="pill"
               onClick={closeMenu}
             >
-              Start a project ↗
+              Start a project <FiArrowUpRight />
             </a>
           </motion.div>
         )}

@@ -4,6 +4,7 @@ import Magnetic from "../ui/Magnetic";
 
 import HeroBackground from "./HeroBackground";
 import HeroScroll from "./HeroScroll";
+import { FiArrowUpRight } from "react-icons/fi";
 
 /* ── shared easing ── */
 const ease = [0.22, 1, 0.36, 1];
@@ -73,7 +74,7 @@ function Hero() {
                 data-cursor="button"
               >
                 Get a Quote
-                <span>↗</span>
+                <span><FiArrowUpRight /></span>
               </a>
             </Magnetic>
 
