@@ -139,7 +139,6 @@ rotateX.set(-(py - 0.5) * 2);
           scale: sc,
 
           transformStyle: "preserve-3d",
-          willChange: "transform",
           backfaceVisibility: "hidden",
         }}
       >

@@ -266,3 +266,13 @@
 .cta-arrow {
   display: inline-block;
 }
+
+@media (max-width: 800px) {
+  .process-showcase {
+    grid-template-columns: 1fr !important;
+  }
+  .process .steps {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+}
