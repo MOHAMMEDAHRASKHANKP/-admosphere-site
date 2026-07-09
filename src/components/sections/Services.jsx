@@ -20,7 +20,6 @@ function ServiceCard({
         <motion.div
           className="service-glass"
           style={{
-            willChange: "transform",
             transformStyle: "preserve-3d",
           }}
         >
