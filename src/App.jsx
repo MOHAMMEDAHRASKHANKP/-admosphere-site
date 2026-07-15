@@ -10,16 +10,15 @@ import Cursor from "./components/ui/Cursor";
 import Loader from "./components/ui/Loader";
 import Reveal from "./components/ui/Reveal";
 import ScrollProgress from "./components/ui/ScrollProgress";
-import WhyAdmosphere from "./components/sections/WhyAdmosphere";
-import WhatsAppPopup from "./components/ui/WhatsAppPopup";
+import { lazy, Suspense } from 'react';
 
-import {
-  Services,
-  Process,
-  Work,
-  GoodQuestions,
-  CTA,
-} from "./components/sections";
+const WhyAdmosphere = lazy(() => import('./components/sections/WhyAdmosphere'));
+const Services = lazy(() => import('./components/sections/Services'));
+const Process = lazy(() => import('./components/sections/Process'));
+const Work = lazy(() => import('./components/sections/Work'));
+const GoodQuestions = lazy(() => import('./components/sections/GoodQuestions'));
+const CTA = lazy(() => import('./components/sections/CTA'));
+const WhatsAppPopup = lazy(() => import('./components/ui/WhatsAppPopup'));
 
 import { services } from "./data/services";
 
@@ -95,25 +94,29 @@ function App() {
           </div>
         </div>
 
-        <Services
-          services={services}
-          Reveal={Reveal}
-        />
+        <Suspense fallback={null}>
+          <Services
+            services={services}
+            Reveal={Reveal}
+          />
 
-        <WhyAdmosphere />
+          <WhyAdmosphere />
 
-        <Work Reveal={Reveal} />
+          <Work Reveal={Reveal} />
 
-        <Process Reveal={Reveal} />
+          <Process Reveal={Reveal} />
 
-        <GoodQuestions Reveal={Reveal} />
+          <GoodQuestions Reveal={Reveal} />
 
-        <CTA Reveal={Reveal} />
+          <CTA Reveal={Reveal} />
+        </Suspense>
       </main>
 
       <Footer Reveal={Reveal} />
 
-      <WhatsAppPopup />
+      <Suspense fallback={null}>
+        <WhatsAppPopup />
+      </Suspense>
     </>
   );
 }

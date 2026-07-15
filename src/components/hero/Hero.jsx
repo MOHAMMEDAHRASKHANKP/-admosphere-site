@@ -33,8 +33,11 @@ function Hero() {
             ADMOSPHERE
           </motion.span>
 
+          {/* SEO Heading */}
+          <h1 className="sr-only">Admosphere | Where Brand Becomes Presence</h1>
+
           {/* Heading */}
-          <motion.h1 {...item(0.22)}>
+          <motion.div role="heading" aria-level="2" className="h1-style" {...item(0.22)}>
             Where Brand
             <br />
             Becomes
@@ -56,7 +59,7 @@ function Hero() {
                 </motion.span>
               ))}
             </em>
-          </motion.h1>
+          </motion.div>
 
           {/* Paragraph */}
           <motion.p {...item(0.42)}>
