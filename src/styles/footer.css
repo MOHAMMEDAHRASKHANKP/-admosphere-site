@@ -43,33 +43,35 @@
   pointer-events: none;
 }
 
-/* ── ADMOSPHERE watermark — true center of footer ─── */
+/* ── ADMOSPHERE watermark — fills full footer width ─── */
 .cinema-bg-word {
-  /* Centered behind the CTA content, not near bottom bar */
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  /* wide enough to hold the full word without clipping */
+  width: 110%;
+
   text-align: center;
 
   /* Typography — Syne 900, uniform rendering */
   font-family: 'Syne', sans-serif;
   font-weight: 900;
   font-style: normal;
-  font-synthesis: none;           /* prevent browser from faking bold */
+  font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
-  font-size: clamp(60px, 13vw, 200px);
+  /* Large enough so all 9 letters span the full viewport width */
+  font-size: clamp(72px, 18.5vw, 320px);
   line-height: 1;
-  letter-spacing: 0.10em;
+  /* Tight tracking so letters fill edge-to-edge without overflow */
+  letter-spacing: 0.04em;
   white-space: nowrap;
   text-transform: uppercase;
 
-  /* Outline-only, no fill — uniform across all glyphs */
+  /* Uniform outline stroke — same weight on every glyph */
   color: transparent;
-  -webkit-text-stroke: 1.4px rgba(255,247,232,.14);
-  /* No background-clip trick so stroke applies equally to all letters */
+  -webkit-text-stroke: 1.6px rgba(255,247,232,.16);
 
   z-index: 1;
   pointer-events: none;
@@ -260,8 +262,9 @@
   }
 
   .cinema-bg-word {
-    font-size: clamp(38px, 13.5vw, 100px);
-    letter-spacing: 0.06em;
+    /* On mobile keep it big enough to fill the width */
+    font-size: clamp(52px, 18vw, 140px);
+    letter-spacing: 0.02em;
   }
 
   .cinema-bottom {
