@@ -10,7 +10,7 @@ const projects = [
     result: '+184% Conversion',
     tags: ['Brand Identity', 'Web Design'],
     gradient:
-      'linear-gradient(135deg, #1a0505 0%, #7a0808 48%, #d4855e 100%)',
+      'linear-gradient(135deg, #18090a 0%, #4a0d11 48%, #9e2329 100%)', // Deep maroon to dark red
   },
   {
     id: '02',
@@ -19,7 +19,7 @@ const projects = [
     result: '12M Impressions',
     tags: ['Social Media', 'Content'],
     gradient:
-      'linear-gradient(135deg, #060e1b 0%, #0e2a52 48%, #4a72bf 100%)',
+      'linear-gradient(135deg, #161211 0%, #291b1a 45%, #69211f 100%)', // Warm charcoal to deep brick
   },
   {
     id: '03',
@@ -28,7 +28,7 @@ const projects = [
     result: '3.4× Organic Growth',
     tags: ['SEO', 'Web Dev'],
     gradient:
-      'linear-gradient(135deg, #091209 0%, #1a4a18 48%, #52a04a 100%)',
+      'linear-gradient(135deg, #1f0b0d 0%, #5e1317 48%, #c44f3d 100%)', // Deep maroon to soft coral
   },
   {
     id: '04',
@@ -37,7 +37,7 @@ const projects = [
     result: '6.2× ROAS',
     tags: ['Meta Ads', 'Creative'],
     gradient:
-      'linear-gradient(135deg, #120510 0%, #5c1050 48%, #c45890 100%)',
+      'linear-gradient(135deg, #141110 0%, #301716 48%, #7c2222 100%)', // Charcoal to dark red
   },
   {
     id: '05',
@@ -46,7 +46,7 @@ const projects = [
     result: '+215% Direct Bookings',
     tags: ['UI/UX', 'Google Ads'],
     gradient:
-      'linear-gradient(135deg, #1f1406 0%, #633e0d 48%, #e0a343 100%)',
+      'linear-gradient(135deg, #240c0e 0%, #6e181c 50%, #db6c56 100%)', // Rich burgundy to soft coral
   },
   {
     id: '06',
@@ -55,7 +55,7 @@ const projects = [
     result: '420+ Qualified Leads/mo',
     tags: ['Performance', 'Landing Page'],
     gradient:
-      'linear-gradient(135deg, #051419 0%, #0a3d4f 48%, #14b8a6 100%)',
+      'linear-gradient(135deg, #151211 0%, #261b1a 48%, #541d1d 100%)', // Warm charcoal to deep wine
   },
   {
     id: '07',
@@ -64,7 +64,7 @@ const projects = [
     result: '4.8× Patient Growth',
     tags: ['Local SEO', 'Video Ads'],
     gradient:
-      'linear-gradient(135deg, #150a1f 0%, #431669 48%, #a855f7 100%)',
+      'linear-gradient(135deg, #1c0a0c 0%, #4f1115 48%, #8e2024 100%)', // Deep maroon to dark ruby
   },
   {
     id: '08',
@@ -73,13 +73,16 @@ const projects = [
     result: '1,400+ Active Members',
     tags: ['Brand Strategy', 'Reels Production'],
     gradient:
-      'linear-gradient(135deg, #1f0808 0%, #691118 48%, #f43f5e 100%)',
+      'linear-gradient(135deg, #210e0f 0%, #5c181b 48%, #e05e4c 100%)', // Deep maroon to vibrant coral
   },
 ];
 
 function Work({ Reveal }) {
   return (
     <section className="work-section" id="work">
+      {/* Background glow behind header */}
+      <div className="work-bg-glow" aria-hidden="true" />
+
       <div className="work-container">
 
         {/* ── Header ─────────────────────────────── */}
@@ -116,7 +119,7 @@ function Work({ Reveal }) {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              {/* Gradient art panel */}
+              {/* Gradient art panel with bottom fade overlay */}
               <div
                 className="work-art"
                 style={{ background: project.gradient }}
