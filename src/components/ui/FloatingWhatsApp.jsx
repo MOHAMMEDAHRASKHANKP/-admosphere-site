@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./FloatingWhatsApp.css";
 
-/* Official WhatsApp vector icon */
-function OfficialWhatsAppIcon() {
+/* Official WhatsApp White Phone Vector Glyph */
+function WhatsAppGlyph() {
   return (
-    <svg viewBox="0 0 48 48" className="wa-icon" fill="none">
-      <circle cx="24" cy="24" r="23" fill="#25D366" />
+    <svg viewBox="0 0 32 32" className="wa-glyph" fill="none">
       <path
-        d="M24.1 8.5C15.5 8.5 8.5 15.5 8.5 24.1C8.5 26.9 9.2 29.5 10.6 31.8L8.8 38.3L15.6 36.5C18.1 38 21 38.8 24.1 38.8C32.7 38.8 39.7 31.8 39.7 23.2C39.7 14.6 32.7 8.5 24.1 8.5ZM32.4 29.7C32 30.8 30.5 31.7 29.3 32C28.5 32.2 27.4 32.3 23.9 30.9C19.4 29 16.5 24.4 16.3 24.1C16.1 23.8 14.5 21.7 14.5 19.5C14.5 17.3 15.6 16.2 16.1 15.7C16.5 15.3 17 15.2 17.5 15.2C17.7 15.2 17.8 15.2 18 15.2C18.5 15.2 18.7 15.3 19 16C19.4 16.9 20.3 19.2 20.4 19.5C20.5 19.8 20.6 20.1 20.4 20.4C20.2 20.8 20.1 20.9 19.8 21.2C19.6 21.5 19.3 21.8 19.1 22C18.8 22.3 18.6 22.6 18.9 23.1C19.2 23.6 20.2 25.2 21.7 26.5C23.6 28.2 25.2 28.7 25.7 28.9C26.2 29.1 26.5 29.1 26.8 28.7C27.2 28.3 28.4 26.9 28.7 26.4C29 25.9 29.3 26 29.7 26.1C30.1 26.2 32.3 27.3 32.7 27.5C33.1 27.7 33.4 27.9 33.5 28C33.6 28.3 33.6 29.2 32.4 29.7Z"
+        d="M16 2.5C8.5 2.5 2.5 8.5 2.5 16C2.5 18.6 3.2 21.1 4.5 23.2L3 29L9 27.5C11.1 28.7 13.5 29.5 16 29.5C23.5 29.5 29.5 23.5 29.5 16C29.5 8.5 23.5 2.5 16 2.5ZM23.2 21.4C22.8 22.4 21.5 23.2 20.4 23.5C19.7 23.7 18.7 23.8 15.6 22.5C11.6 20.8 9 16.7 8.8 16.4C8.6 16.1 7.2 14.3 7.2 12.3C7.2 10.3 8.2 9.3 8.6 8.9C9 8.5 9.5 8.4 9.9 8.4C10.1 8.4 10.2 8.4 10.4 8.4C10.8 8.4 11 8.5 11.2 9.1C11.6 9.9 12.4 12 12.5 12.2C12.6 12.5 12.7 12.8 12.5 13.1C12.3 13.4 12.2 13.5 12 13.8C11.8 14.1 11.5 14.3 11.3 14.5C11.1 14.8 10.9 15 11.2 15.5C11.5 15.9 12.3 17.3 13.7 18.5C15.4 20 16.8 20.5 17.3 20.7C17.7 20.9 18 20.8 18.2 20.5C18.6 20.1 19.6 18.9 19.9 18.4C20.2 18 20.5 18.1 20.8 18.2C21.2 18.3 23.2 19.3 23.5 19.5C23.9 19.7 24.1 19.8 24.2 20C24.3 20.2 24.3 21 23.2 21.4Z"
         fill="#FFFFFF"
       />
     </svg>
@@ -49,8 +48,9 @@ export default function FloatingWhatsApp() {
     <motion.button
       className={`floating-whatsapp ${visible ? "show" : ""}`}
       onClick={openWhatsApp}
-      whileHover={{ scale: 1.04 }}
-      whileTap={{ scale: 0.95 }}
+      aria-label="Chat on WhatsApp"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.94 }}
       animate={{
         y: [0, -6, 0],
       }}
@@ -60,9 +60,11 @@ export default function FloatingWhatsApp() {
         ease: "easeInOut",
       }}
     >
-      <OfficialWhatsAppIcon />
+      <div className="wa-icon-box">
+        <WhatsAppGlyph />
+      </div>
 
-      <span>Chat with Admosphere</span>
+      <span className="wa-label">Chat with Admosphere</span>
     </motion.button>
   );
 }

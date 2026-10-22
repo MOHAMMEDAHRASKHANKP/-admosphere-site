@@ -3,20 +3,20 @@
   right:28px;
   bottom:28px;
   z-index:9998;
-  height:62px;
-  width:62px;
+  height:60px;
+  width:60px;
   border:none;
   cursor:pointer;
   border-radius:999px;
   display:flex;
   align-items:center;
-  justify-content:center;
-  gap:12px;
+  justify-content:flex-start;
+  padding:0;
   overflow:hidden;
   color:#fff;
   background:#25D366;
-  box-shadow:0 12px 35px rgba(37,211,102,.45), 0 4px 14px rgba(0,0,0,.25);
-  transition:width .42s cubic-bezier(.22,1,.36,1), border-radius .42s, transform .32s ease, opacity .35s, background .25s ease;
+  box-shadow:0 10px 30px rgba(37,211,102,.5), 0 4px 12px rgba(0,0,0,.2);
+  transition:width .4s cubic-bezier(.22,1,.36,1), transform .3s ease, opacity .35s, background .25s ease;
   opacity:0;
   transform:translateY(40px);
 }
@@ -28,50 +28,63 @@
 
 .floating-whatsapp:hover{
   width:245px;
-  justify-content:flex-start;
-  padding-left:14px;
   background:#20ba59;
-  box-shadow:0 18px 45px rgba(37,211,102,.55), 0 6px 20px rgba(0,0,0,.3);
+  box-shadow:0 14px 40px rgba(37,211,102,.65), 0 6px 18px rgba(0,0,0,.25);
 }
 
-.wa-icon{
-  width:36px;
-  height:36px;
+/* Fixed circular box that always holds the WhatsApp logo perfectly */
+.wa-icon-box{
+  width:60px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   flex-shrink:0;
+}
+
+.wa-glyph{
+  width:34px;
+  height:34px;
   display:block;
 }
 
-.floating-whatsapp span{
+.wa-label{
   white-space:nowrap;
   font-size:14px;
   font-weight:700;
   font-family:Syne, Inter, sans-serif;
   letter-spacing:-.01em;
   color:#ffffff;
+  padding-right:20px;
   opacity:0;
-  transform:translateX(10px);
-  transition:.32s;
+  transform:translateX(8px);
+  transition:.3s ease;
 }
 
-.floating-whatsapp:hover span{
+.floating-whatsapp:hover .wa-label{
   opacity:1;
   transform:translateX(0);
 }
 
 @media(max-width:768px){
   .floating-whatsapp{
-    width:56px !important;
-    height:56px;
+    width:54px !important;
+    height:54px;
     right:18px;
     bottom:18px;
   }
 
-  .wa-icon{
-    width:32px;
-    height:32px;
+  .wa-icon-box{
+    width:54px;
+    height:54px;
   }
 
-  .floating-whatsapp span{
+  .wa-glyph{
+    width:30px;
+    height:30px;
+  }
+
+  .wa-label{
     display:none;
   }
 }
