@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 function Footer({ Reveal }) {
+  const wordmarkRef = useRef(null);
+
   const footerWords = [
     'Brand Presence',
     'Digital Experiences',
@@ -16,6 +18,29 @@ function Footer({ Reveal }) {
       top: 0,
       behavior: 'smooth',
     });
+
+  // Fit wordmark to 94% container width automatically
+  useEffect(() => {
+    const el = wordmarkRef.current;
+    if (!el) return;
+
+    const fit = () => {
+      const box = el.parentElement;
+      if (!box) return;
+      el.style.fontSize = '100px';
+      const ratio = (box.clientWidth * 0.94) / el.scrollWidth;
+      el.style.fontSize = `${100 * ratio}px`;
+    };
+
+    fit();
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fit);
+    }
+
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, []);
 
   const FooterMarquee = () => (
     <div className="cinema-marquee-track">
@@ -96,8 +121,12 @@ function Footer({ Reveal }) {
         </div>
       </div>
 
-      {/* ── Grand wordmark — bottom of footer, full-width ── */}
-      <div className="cinema-wordmark" aria-hidden="true">
+      {/* ── Auto-fitting Grand wordmark — bottom of footer, 94% width ── */}
+      <div
+        ref={wordmarkRef}
+        className="cinema-wordmark"
+        aria-hidden="true"
+      >
         ADMOSPHERE
       </div>
 

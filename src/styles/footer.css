@@ -90,7 +90,7 @@
   align-items: center;
   text-align: center;
   flex: 1;
-  padding: 150px 7vw 100px;
+  padding: 150px 7vw 110px;
 }
 
 .cinema-center .kicker {
@@ -148,38 +148,33 @@
 
 /* ══════════════════════════════════════════════════════
    GRAND WORDMARK "ADMOSPHERE"
-   Sits in the space BELOW the buttons and ABOVE the copyright bar.
-   Horizontally centered, spanning 92-96% viewport width.
-   Never wrapped, never cropped.
+   Centered with left: 50%; transform: translateX(-50%)
+   Scales via JS to 94% of parent width.
+   Bottom sits 110px from footer bottom (~40px above copyright bar).
    ══════════════════════════════════════════════════════ */
 .cinema-wordmark {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 70px;
-  width: 100%;
-  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 110px;
+  width: max-content;
   text-align: center;
   white-space: nowrap;
   z-index: 1;
 
-  /* Extra-wide bold display font */
+  /* Typography */
   font-family: 'Syne', sans-serif;
   font-weight: 900;
   font-style: normal;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
-
-  /* Responsive fit-to-width sizing: spans ~92-96% width across all screens */
-  font-size: clamp(3rem, 11.5vw, 15rem);
   line-height: 0.9;
-  letter-spacing: -0.02em;
   text-transform: uppercase;
 
-  /* Cinematic outline-only with subtle glow & vertical fade */
+  /* Outline-only styling with subtle glow & soft vertical fade */
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.14);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.16);
   text-shadow: 0 0 60px rgba(160, 20, 20, 0.25);
   -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 90%);
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 90%);
@@ -191,7 +186,7 @@
 /* ── Bottom bar — copyright left, ↑ center, right stays clear ─── */
 .cinema-bottom {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -255,7 +250,7 @@
 /* ── Mobile ─── */
 @media (max-width: 800px) {
   .cinema-footer {
-    min-height: 85vh;
+    min-height: 90vh;
   }
 
   .cinema-aurora {
@@ -264,7 +259,7 @@
   }
 
   .cinema-center {
-    padding: 120px 24px 80px;
+    padding: 120px 24px 90px;
   }
 
   .cinema-center h2 {
@@ -272,9 +267,7 @@
   }
 
   .cinema-wordmark {
-    bottom: 60px;
-    font-size: clamp(2.4rem, 11vw, 5rem);
-    letter-spacing: -0.02em;
+    bottom: 95px;
   }
 
   .cinema-bottom {
