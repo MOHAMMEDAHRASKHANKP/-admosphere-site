@@ -84,13 +84,13 @@
 }
 
 /* ============================================================
-   GRID
+   GRID — Compact 4-Column Modern Showcase
    ============================================================ */
 
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   margin-bottom: 72px;
 }
 
@@ -99,21 +99,25 @@
    ============================================================ */
 
 .work-card {
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
-  background: #1e1a18;
-  border: 1px solid rgba(255,247,232,.07);
+  background: #1a1715;
+  border: 1px solid rgba(255,247,232,.08);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
   transition:
-    border-color .38s ease,
-    box-shadow .38s ease;
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
 }
 
 .work-card:hover {
-  border-color: rgba(239,108,93,.28);
+  transform: translateY(-6px);
+  border-color: rgba(239,108,93,.35);
   box-shadow:
-    0 32px 80px rgba(0,0,0,.45),
-    0 0 0 1px rgba(239,108,93,.1);
+    0 24px 60px rgba(0,0,0,.5),
+    0 0 0 1px rgba(239,108,93,.15);
 }
 
 /* ============================================================
@@ -122,7 +126,7 @@
 
 .work-art {
   position: relative;
-  height: 360px;
+  height: 200px;
   overflow: hidden;
 }
 
@@ -143,9 +147,9 @@
 .work-num {
   position: absolute;
   bottom: 20px;
-  left: 26px;
+  left: 20px;
   font-family: Syne, sans-serif;
-  font-size: 88px;
+  font-size: 56px;
   font-weight: 800;
   line-height: 1;
   letter-spacing: -.06em;
@@ -164,21 +168,23 @@
    ============================================================ */
 
 .work-info {
-  padding: 22px 28px 26px;
+  padding: 16px 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .work-info-top {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .work-name {
   font-family: Syne, sans-serif;
-  font-size: 24px;
+  font-size: 19px;
   font-weight: 700;
   letter-spacing: -.03em;
   color: #fff7e8;
@@ -186,8 +192,8 @@
 }
 
 .work-category {
-  font-size: 13px;
-  color: rgba(255,247,232,.36);
+  font-size: 11px;
+  color: rgba(255,247,232,.4);
   margin: 0;
 }
 
@@ -195,18 +201,18 @@
 .work-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 6px;
 }
 
 .work-tag {
-  padding: 5px 12px;
+  padding: 4px 9px;
   border-radius: 999px;
   background: rgba(255,247,232,.055);
   border: 1px solid rgba(255,247,232,.1);
   color: rgba(255,247,232,.48);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: .03em;
+  letter-spacing: .02em;
   transition: background .28s ease, color .28s ease, border-color .28s ease;
 }
 
@@ -220,8 +226,8 @@
 .work-result {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding-top: 14px;
+  gap: 8px;
+  padding-top: 12px;
   border-top: 1px solid rgba(255,247,232,.07);
 }
 
@@ -311,9 +317,10 @@
 @media (max-width: 1024px) {
   .work-section    { padding: 120px 0; }
   .work-header-row { grid-template-columns: 1fr; gap: 22px; }
+  .work-grid       { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .work-title      { font-size: clamp(40px, 7vw, 60px); }
-  .work-art        { height: 300px; }
-  .work-num        { font-size: 70px; }
+  .work-art        { height: 240px; }
+  .work-num        { font-size: 60px; }
   .work-subtitle   { max-width: 100%; }
 }
 

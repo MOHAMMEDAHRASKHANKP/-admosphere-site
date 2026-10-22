@@ -39,6 +39,42 @@ const projects = [
     gradient:
       'linear-gradient(135deg, #120510 0%, #5c1050 48%, #c45890 100%)',
   },
+  {
+    id: '05',
+    name: 'Aura Hospitality',
+    category: 'Brand Elevation · Booking UX',
+    result: '+215% Direct Bookings',
+    tags: ['UI/UX', 'Google Ads'],
+    gradient:
+      'linear-gradient(135deg, #1f1406 0%, #633e0d 48%, #e0a343 100%)',
+  },
+  {
+    id: '06',
+    name: 'Solis Energy',
+    category: 'Lead Gen Engine · B2B',
+    result: '420+ Qualified Leads/mo',
+    tags: ['Performance', 'Landing Page'],
+    gradient:
+      'linear-gradient(135deg, #051419 0%, #0a3d4f 48%, #14b8a6 100%)',
+  },
+  {
+    id: '07',
+    name: 'Vogue Dental Care',
+    category: 'Local Dominance · Meta Ads',
+    result: '4.8× Patient Growth',
+    tags: ['Local SEO', 'Video Ads'],
+    gradient:
+      'linear-gradient(135deg, #150a1f 0%, #431669 48%, #a855f7 100%)',
+  },
+  {
+    id: '08',
+    name: 'Pulse Fitness Hub',
+    category: 'Rebrand · Membership Scale',
+    result: '1,400+ Active Members',
+    tags: ['Brand Strategy', 'Reels Production'],
+    gradient:
+      'linear-gradient(135deg, #1f0808 0%, #691118 48%, #f43f5e 100%)',
+  },
 ];
 
 function Work({ Reveal }) {
