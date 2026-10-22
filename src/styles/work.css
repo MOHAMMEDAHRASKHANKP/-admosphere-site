@@ -361,6 +361,159 @@
 }
 
 /* ============================================================
+   MOBILE TOGGLE & FULLSCREEN MODAL VIEWER
+   ============================================================ */
+
+.work-mobile-toggle-wrapper {
+  display: none;
+}
+
+.work-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(23, 16, 15, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.work-modal-dialog {
+  position: relative;
+  width: min(520px, 94vw);
+  background: #1e1514;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+}
+
+.work-modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.work-modal-counter {
+  font-family: Syne, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ef6c5d;
+}
+
+.work-modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff7e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.work-modal-close:hover {
+  background: rgba(239, 108, 93, 0.25);
+  border-color: rgba(239, 108, 93, 0.5);
+}
+
+.work-modal-art {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.work-modal-art-num {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  font-family: Syne, sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.14);
+}
+
+.work-modal-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.work-modal-category {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 247, 232, 0.5);
+  text-transform: uppercase;
+}
+
+.work-modal-title {
+  font-family: Syne, sans-serif;
+  font-size: clamp(24px, 5vw, 32px);
+  margin: 0;
+  color: #fff7e8;
+}
+
+.work-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 8px;
+}
+
+.work-modal-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.work-modal-result strong {
+  color: #ef6c5d;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.work-modal-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 24px 20px;
+}
+
+.work-modal-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff7e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.work-modal-arrow:hover {
+  background: rgba(239, 108, 93, 0.2);
+  border-color: rgba(239, 108, 93, 0.4);
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 
@@ -382,12 +535,127 @@
     gap: 20px;
   }
 
+  /* 2-column grid on mobile with 12px gap */
   .work-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-bottom: 32px;
   }
 
-  .work-title {
-    font-size: clamp(36px, 9vw, 54px);
+  /* Fixed aspect-ratio 4/5 on mobile cards so nothing shifts */
+  .work-card {
+    border-radius: 16px;
+    aspect-ratio: 4 / 5;
+    background: #191211 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .work-art {
+    height: 48%;
+  }
+
+  .work-num {
+    font-size: 36px;
+    bottom: 8px;
+    left: 10px;
+  }
+
+  .work-info {
+    padding: 10px 12px 12px;
+    gap: 6px;
+  }
+
+  .work-name {
+    font-size: 15px;
+    line-height: 1.15;
+  }
+
+  .work-category {
+    font-size: 9px;
+  }
+
+  .work-tag {
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+
+  .work-result {
+    padding-top: 6px;
+    gap: 6px;
+  }
+
+  .work-result strong {
+    font-size: 11px;
+  }
+
+  /* Smooth reveal for extra 4 cards via opacity and transform only */
+  .work-grid.show-initial-mobile .mobile-extra-card {
+    opacity: 0 !important;
+    transform: translateY(16px) !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .work-grid.show-all-mobile .mobile-extra-card {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    height: auto !important;
+    will-change: transform;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  /* Mobile View All / Show Less Controls */
+  .work-mobile-toggle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 50px;
+  }
+
+  .work-mobile-counter {
+    font-family: Syne, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(251, 241, 228, 0.6);
+  }
+
+  .work-mobile-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: none;
+    background: var(--red, #a60304);
+    color: #fff7e8;
+    font: 700 12px 'Syne', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 8px 24px rgba(166, 3, 4, 0.35);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .work-mobile-pill-btn:active {
+    transform: scale(0.96);
+  }
+
+  .work-toggle-icon {
+    font-size: 16px;
   }
 }
+
