@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Magnetic from "../ui/Magnetic";
-import { FiArrowUpRight, FiArrowRight } from 'react-icons/fi';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 function ServiceCard({
   service,
@@ -130,7 +130,6 @@ function Services({
   const [activeIndex, setActiveIndex] = useState(0);
   const [hasSwiped, setHasSwiped] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const nudgedRef = useRef(false);
 
   // Detect mobile
   useEffect(() => {
@@ -142,23 +141,32 @@ function Services({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Update dots via throttled/passive scroll listener on mobile
+  // Update dots via passive scroll listener on mobile
   useEffect(() => {
     const bento = bentoRef.current;
     if (!bento) return;
 
     let ticking = false;
     const handleScroll = () => {
-      if (!hasSwiped) setHasSwiped(true);
+      if (!hasSwiped) {
+        setHasSwiped(true);
+      }
 
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollLeft = bento.scrollLeft;
-          const card = bento.querySelector(".service");
-          if (card) {
-            const cardWidth = card.offsetWidth + 14; // card width + gap
-            const index = Math.round(scrollLeft / cardWidth);
-            setActiveIndex(Math.max(0, Math.min(services.length - 1, index)));
+          const cards = bento.querySelectorAll(".service");
+          if (cards.length > 0) {
+            let closestIndex = 0;
+            let minDiff = Infinity;
+            cards.forEach((card, idx) => {
+              const diff = Math.abs(card.offsetLeft - 20 - scrollLeft);
+              if (diff < minDiff) {
+                minDiff = diff;
+                closestIndex = idx;
+              }
+            });
+            setActiveIndex(closestIndex);
           }
           ticking = false;
         });
@@ -168,36 +176,20 @@ function Services({
 
     bento.addEventListener("scroll", handleScroll, { passive: true });
     return () => bento.removeEventListener("scroll", handleScroll);
-  }, [services.length, hasSwiped]);
+  }, [hasSwiped]);
 
-  // One-time nudge effect when section first enters screen
-  useEffect(() => {
-    const section = sectionRef.current;
+  // Handle dot click navigation
+  const handleDotClick = (i) => {
     const bento = bentoRef.current;
-    if (!section || !bento || window.innerWidth >= 768) return;
-
-    // Skip if user prefers reduced motion
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !nudgedRef.current) {
-            nudgedRef.current = true;
-            bento.classList.add("bento-nudge");
-            setTimeout(() => {
-              bento.classList.remove("bento-nudge");
-            }, 850);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+    if (!bento) return;
+    const cards = bento.querySelectorAll(".service");
+    const targetCard = cards[i];
+    if (targetCard) {
+      const scrollPos = targetCard.offsetLeft - 20;
+      bento.scrollTo({ left: scrollPos, behavior: "smooth" });
+      setActiveIndex(i);
+    }
+  };
 
   return (
     <section
@@ -217,12 +209,6 @@ function Services({
           </p>
         </Reveal>
 
-        {/* Mobile Swipe Hint */}
-        <div className={`services-swipe-hint ${hasSwiped ? "hint-hidden" : ""}`}>
-          <span>Swipe</span>
-          <FiArrowRight className="swipe-arrow" />
-        </div>
-
         <div className="service-atmosphere">
           <div className="service-glow glow-a" />
           <div className="service-glow glow-b" />
@@ -239,25 +225,27 @@ function Services({
             ))}
           </div>
 
-          {/* Mobile Pagination Dots */}
-          <div className="services-dots-container" aria-label="Services carousel navigation">
-            {services.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`service-dot ${i === activeIndex ? "active" : ""}`}
-                aria-label={`Go to service ${i + 1}`}
-                onClick={() => {
-                  const bento = bentoRef.current;
-                  if (bento) {
-                    const card = bento.querySelectorAll(".service")[i];
-                    if (card) {
-                      card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-                    }
-                  }
-                }}
-              />
-            ))}
+          {/* Mobile Dots and Swipe Text on the same row below cards */}
+          <div className="services-mobile-nav" aria-label="Services carousel navigation">
+            <div className="services-dots-container">
+              {services.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`service-dot ${i === activeIndex ? "active" : ""}`}
+                  aria-label={`Go to service ${i + 1}`}
+                  onClick={() => handleDotClick(i)}
+                />
+              ))}
+            </div>
+
+            <div
+              className={`services-swipe-hint ${hasSwiped ? "hint-hidden" : ""}`}
+              aria-hidden={hasSwiped ? "true" : "false"}
+            >
+              <span>Swipe</span>
+              <span className="swipe-arrow" aria-hidden="true">→</span>
+            </div>
           </div>
         </div>
       </div>

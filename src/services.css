@@ -158,8 +158,12 @@
 
 .service-atmosphere .s1 .service-glass{background:linear-gradient(145deg,rgba(255,250,238,.82),rgba(239,190,154,.43))}
 /* ============================================================
-   SWIPE HINT & DOTS
+   MOBILE SWIPER (SCREENS UNDER 768px)
    ============================================================ */
+
+.services-mobile-nav {
+  display: none;
+}
 
 .services-swipe-hint {
   display: none;
@@ -170,53 +174,24 @@
 }
 
 @media (max-width: 768px) {
-  .services-swipe-hint {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 14px;
-    font: 700 11px 'Syne', sans-serif;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: var(--red);
-    opacity: 0.9;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-
-  .services-swipe-hint.hint-hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(6px);
-  }
-
-  .services-swipe-hint .swipe-arrow {
-    font-size: 13px;
-    animation: swipeArrowNudge 1.6s ease-in-out infinite;
-  }
-
-  @keyframes swipeArrowNudge {
-    0%, 100% { transform: translateX(0); }
-    50%      { transform: translateX(4px); }
-  }
-
-  /* One-time entrance nudge */
-  .bento-nudge {
-    animation: bentoSwipeNudge 0.8s ease-in-out forwards;
-  }
-
-  @keyframes bentoSwipeNudge {
-    0%   { transform: translateX(0); }
-    38%  { transform: translateX(-40px); }
-    100% { transform: translateX(0); }
-  }
-
-  /* Native CSS scroll-snap only — no JS interference, zero flicker */
-  .service-atmosphere {
+  /* Bleed scroll area so 20px padding lines up with content and ~8vw peeks on right */
+  #services .service-atmosphere {
     padding: 16px 0 20px !important;
     border-radius: 28px;
-    overflow: visible;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
   }
 
+  #services .service-atmosphere:before {
+    display: none !important;
+  }
+
+  /* 2. Native CSS scroll-snap with 20px left padding */
   .service-atmosphere .bento {
     display: flex !important;
     overflow-x: auto !important;
@@ -225,7 +200,8 @@
     overscroll-behavior-x: contain !important;
     scrollbar-width: none !important;
     gap: 14px !important;
-    padding: 0 16px 16px !important;
+    padding: 0 20px 8px !important;
+    scroll-padding-left: 20px !important;
     margin: 0 !important;
   }
 
@@ -233,7 +209,7 @@
     display: none !important;
   }
 
-  /* 84vw wide card with peek effect */
+  /* 1 & 7. 84vw wide card with peek effect, translateZ and backface-visibility */
   .service-atmosphere .service,
   .service-atmosphere .service-reveal-wrapper,
   .service {
@@ -244,54 +220,140 @@
     scroll-snap-stop: normal !important;
     opacity: 1 !important;
     visibility: visible !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     transform: translateZ(0) !important;
     backface-visibility: hidden !important;
     will-change: transform !important;
   }
 
-  /* Optimized mobile card: remove heavy backdrop-filter & heavy shadow to prevent GPU redraw blink */
-  .service-glass {
-    min-height: 480px !important;
+  .service-card-link {
+    display: flex !important;
+    flex-direction: column !important;
     height: 100% !important;
-    padding: 24px !important;
+    width: 100% !important;
+  }
+
+  /* 3 & 7. Equal height, comfortable padding, no text touching edges, no backdrop-filter or heavy shadow */
+  .service-glass {
+    min-height: 450px !important;
+    height: 100% !important;
+    padding: 24px 20px !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     background: linear-gradient(145deg, #fff9ee, #faebd7) !important;
-    box-shadow: 0 8px 24px rgba(65, 31, 18, 0.08) !important;
+    box-shadow: 0 6px 20px rgba(65, 31, 18, 0.08) !important;
     border: 1px solid rgba(255, 255, 255, 0.9) !important;
     transform: translateZ(0) !important;
     backface-visibility: hidden !important;
-    will-change: transform !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
   }
 
-  .service-glass::after {
+  .service-glass::after,
+  .service-glass::before {
     display: none !important;
   }
 
-  /* Progress Dots */
-  .services-dots-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-top: 18px;
+  .service-atmosphere .service h3 {
+    font-size: 22px !important;
+    line-height: 1.15 !important;
+    margin: 0 0 12px !important;
+    min-height: auto !important;
   }
 
+  .service-atmosphere .service p {
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+  }
+
+  .service-tags {
+    gap: 6px !important;
+    min-height: auto !important;
+    margin-bottom: 16px !important;
+  }
+
+  .service-foot {
+    padding-top: 14px !important;
+  }
+
+  /* 4 & 5. Navigation Row below cards: centered dots + Swipe text on same row with 12px gap, 16px space above */
+  .services-mobile-nav {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 0 20px;
+  }
+
+  .services-dots-container {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Inactive dots: small 6px circle in a muted tone */
   .service-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
     border: none;
     padding: 0;
-    background: rgba(166, 3, 4, 0.22);
+    background: rgba(23, 16, 15, 0.22);
     cursor: pointer;
-    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.3s ease, background-color 0.3s ease;
+    will-change: width, background-color;
   }
 
+  /* Active dot: dark red pill 20px wide, 6px tall */
   .service-dot.active {
-    width: 22px;
-    background: var(--red);
+    width: 20px;
+    height: 6px;
+    border-radius: 999px;
+    background: #A30D0D;
+  }
+
+  /* 5 & 6. Swipe text: uppercase, 11px, letter-spacing 0.12em, font-weight 600, color #A30D0D */
+  .services-swipe-hint {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #A30D0D;
+    transition: opacity 0.4s ease;
+  }
+
+  .services-swipe-hint.hint-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .swipe-arrow {
+    display: inline-block;
+    will-change: transform;
+    animation: swipeArrowNudge 1.6s ease-in-out infinite;
+  }
+
+  @keyframes swipeArrowNudge {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
+}
+
+/* 8. Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .swipe-arrow {
+    animation: none !important;
   }
 }
 
