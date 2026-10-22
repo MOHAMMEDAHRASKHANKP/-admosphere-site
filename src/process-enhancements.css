@@ -99,13 +99,9 @@
   flex: 0 0 auto;
 }
 
-/* ── Tighten gap between Process and Good Questions (FAQ) ── */
+/* ── Balanced breathing room between Process and Good Questions (FAQ) ── */
 .section.process {
-  padding-bottom: 25px;
-}
-
-.section.faq {
-  padding-top: 25px;
+  padding-bottom: 50px;
 }
 
 @media (max-width: 800px) {

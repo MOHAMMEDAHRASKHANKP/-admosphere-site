@@ -3,8 +3,8 @@
    ============================================================ */
 
 .section.faq {
-  padding-top: 30px;
-  padding-bottom: 70px;
+  padding-top: 60px;
+  padding-bottom: 80px;
 }
 
 .faq .section-inner {
@@ -12,10 +12,14 @@
   margin: 0 auto;
 }
 
+.faq .section-head {
+  margin-bottom: 36px;
+}
+
 .faq-list {
   width: 100%;
   max-width: 100% !important;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .faq details {
