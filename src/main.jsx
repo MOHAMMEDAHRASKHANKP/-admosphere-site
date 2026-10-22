@@ -5,7 +5,7 @@ import App from './App';
 // Keep the original stylesheet for now
 import './styles.css';
 import "./styles/design-system.css";
-// New modular styles
+// New modular styles (currently empty)
 import './styles/base.css';
 import './styles/navbar.css';
 import './styles/loader.css';
@@ -21,7 +21,6 @@ import './services.css';
 import './styles/Why-admosphere.css';
 import './process-enhancements.css';
 import './styles/cta.css';
-import './styles/footer-cinema.css';
 
 createRoot(document.getElementById('root')).render(
   <App />
