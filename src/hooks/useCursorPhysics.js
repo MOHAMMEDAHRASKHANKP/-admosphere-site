@@ -25,24 +25,16 @@ export default function useCursorPhysics({
     let ringX = mouseX;
     let ringY = mouseY;
 
-    // Velocity & morph
-    let stretch = 1;
-    let angle = 0;
+    // Click pulse (uniform scale only, perfect circle)
     let pulse = 1;
-    let breathe = 1;
-    let lastMove = performance.now();
 
     // Physics Constants
     const FOLLOW_LERP = 0.15;
-    const STRETCH_SPEED = 0.14;
-    const ROTATE_SPEED = 0.16;
-    const MAX_STRETCH = 1.22;
 
     // Mousemove only saves mouse position with passive listener
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      lastMove = performance.now();
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -50,8 +42,6 @@ export default function useCursorPhysics({
     let frameId;
 
     const animate = () => {
-      const now = performance.now();
-
       // Instant dot update
       dotX = mouseX;
       dotY = mouseY;
@@ -74,27 +64,12 @@ export default function useCursorPhysics({
       dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
       ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
 
-      // Velocity morph (concave/convex stretch)
-      const targetStretch = Math.min(1 + speed * 0.01, MAX_STRETCH);
-      stretch += (targetStretch - stretch) * STRETCH_SPEED;
-
-      const targetAngle = (Math.atan2(dy, dx) * 180) / Math.PI;
-      angle += (targetAngle - angle) * ROTATE_SPEED;
-
-      // Idle breathing (no DOM reads)
-      const idle = now - lastMove > 600;
-      const targetBreathe = idle ? 1 + Math.sin(now * 0.0018) * 0.025 : 1;
-      breathe += (targetBreathe - breathe) * 0.05;
-
-      // Click pulse
+      // Click pulse: uniform scale only to maintain a perfect circle at all times
       const isPressed = ringInner.classList.contains("cursor-click");
-      const targetPulse = isPressed ? 0.88 : 1;
-      pulse += (targetPulse - pulse) * 0.16;
+      const targetPulse = isPressed ? 0.9 : 1;
+      pulse += (targetPulse - pulse) * 0.18;
 
-      // Ring inner transform exclusively via rotate and scale
-      const scaleX = (stretch * pulse * breathe).toFixed(4);
-      const scaleY = (((1 / stretch) * pulse * breathe)).toFixed(4);
-      ringInner.style.transform = `rotate(${angle.toFixed(2)}deg) scale(${scaleX}, ${scaleY})`;
+      ringInner.style.transform = `scale(${pulse.toFixed(4)})`;
 
       frameId = requestAnimationFrame(animate);
     };
