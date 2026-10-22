@@ -83,14 +83,14 @@
 /* ── CTA center content ─── */
 .cinema-center {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex: 1;
-  padding: 160px 7vw 60px;
+  padding: 150px 7vw 100px;
 }
 
 .cinema-center .kicker {
@@ -147,19 +147,23 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   GRAND WORDMARK — sits between CTA and bottom bar
-   Full-width, bottom-aligned, outline style
+   GRAND WORDMARK "ADMOSPHERE"
+   Sits in the space BELOW the buttons and ABOVE the copyright bar.
+   Horizontally centered, spanning 92-96% viewport width.
+   Never wrapped, never cropped.
    ══════════════════════════════════════════════════════ */
 .cinema-wordmark {
-  position: relative;
-  z-index: 3;
-  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 70px;
   width: 100%;
-  /* Push letters to bottom edge, no extra gap */
-  padding: 24px 0 0;
-  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 1;
 
-  /* Typography */
+  /* Extra-wide bold display font */
   font-family: 'Syne', sans-serif;
   font-weight: 900;
   font-style: normal;
@@ -167,29 +171,28 @@
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
 
-  /*
-   * At 1440px: 16vw = 230px. Syne 900 has wide glyphs.
-   * 9 letters × ~0.68 char-width ≈ fills ~100% viewport.
-   * Adjust letter-spacing to nudge edge-to-edge alignment.
-   */
-  font-size: clamp(56px, 16vw, 260px);
-  line-height: 0.88;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
+  /* Responsive fit-to-width sizing: spans ~92-96% width across all screens */
+  font-size: clamp(3rem, 11.5vw, 15rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  text-align: center;
 
-  /* Matching site aesthetic: cream outline, transparent fill */
+  /* Cinematic outline-only with subtle glow & vertical fade */
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255,247,232,.22);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.14);
+  text-shadow: 0 0 60px rgba(160, 20, 20, 0.25);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 90%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 90%);
+
+  pointer-events: none;
+  user-select: none;
 }
 
-/* ── Bottom bar — copyright left, ↑ center ─── */
+/* ── Bottom bar — copyright left, ↑ center, right stays clear ─── */
 .cinema-bottom {
   position: relative;
-  z-index: 10;
+  z-index: 2;
   display: grid;
-  /* copyright | ↑ button | empty column keeps right side clear of WhatsApp */
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 16px;
@@ -209,7 +212,7 @@
   justify-self: start;
 }
 
-/* ── Scroll-to-top button — center of bottom bar ─── */
+/* ── Scroll-to-top button ─── */
 .top-button {
   justify-self: center;
   width: 44px;
@@ -261,7 +264,7 @@
   }
 
   .cinema-center {
-    padding: 120px 24px 40px;
+    padding: 120px 24px 80px;
   }
 
   .cinema-center h2 {
@@ -269,9 +272,9 @@
   }
 
   .cinema-wordmark {
-    font-size: clamp(44px, 18.5vw, 130px);
+    bottom: 60px;
+    font-size: clamp(2.4rem, 11vw, 5rem);
     letter-spacing: -0.02em;
-    padding: 16px 0 0;
   }
 
   .cinema-bottom {
