@@ -29,7 +29,7 @@ function Hero() {
 
           {/* Eyebrow */}
           <motion.span className="eyebrow" {...item(0.1)}>
-            <b />
+            <img src="/logo-red.png" className="eyebrow-logo" alt="Admosphere logo" />
             ADMOSPHERE
           </motion.span>
 
