@@ -11,6 +11,9 @@ import Loader from "./components/ui/Loader";
 import Reveal from "./components/ui/Reveal";
 import ScrollProgress from "./components/ui/ScrollProgress";
 import { lazy, Suspense } from 'react';
+import TickerBand from "./components/ui/TickerBand";
+
+import "./styles/depth-enhancements.css";
 
 const WhyAdmosphere = lazy(() => import('./components/sections/WhyAdmosphere'));
 const Services = lazy(() => import('./components/sections/Services'));
@@ -50,6 +53,15 @@ function App() {
       <FloatingWhatsApp />
 
       <Cursor />
+
+      {/* Ambient depth layers */}
+      <div className="ambient-glows-container" aria-hidden="true">
+        <div className="ambient-glow-peach" />
+        <div className="ambient-glow-red" />
+        <div className="ambient-glow-center" />
+      </div>
+      <div className="ambient-grid" aria-hidden="true" />
+      <div className="ambient-grain" aria-hidden="true" />
 
       <main id="top">
         <Hero />
@@ -100,13 +112,23 @@ function App() {
             Reveal={Reveal}
           />
 
+          <hr className="section-divider" aria-hidden="true" />
+
           <WhyAdmosphere />
+
+          <TickerBand />
 
           <Work Reveal={Reveal} />
 
+          <hr className="section-divider" aria-hidden="true" />
+
           <Process Reveal={Reveal} />
 
+          <hr className="section-divider" aria-hidden="true" />
+
           <GoodQuestions Reveal={Reveal} />
+
+          <hr className="section-divider" aria-hidden="true" />
 
           <CTA Reveal={Reveal} />
         </Suspense>

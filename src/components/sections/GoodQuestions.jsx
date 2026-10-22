@@ -21,6 +21,7 @@ function GoodQuestions({ Reveal }) {
     <section className="section faq" id="faq">
       <div className="section-inner">
         <Reveal className="section-head">
+          <span className="section-num-watermark" aria-hidden="true">05</span>
           <span className="kicker">Good questions</span>
           <h2>Before we begin.</h2>
         </Reveal>

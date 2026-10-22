@@ -1,0 +1,227 @@
+/* ============================================================
+   DEPTH, AMBIENT LIGHTING, GRAIN & SECTION CONSISTENCY
+   ============================================================ */
+
+/* ── Light grain texture overlay across page ── */
+.ambient-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ── Faint global grid pattern over cream sections ── */
+.ambient-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(21, 19, 17, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 19, 17, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+}
+
+/* ── Floating blurred ambient glows behind cream content ── */
+.ambient-glows-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.ambient-glow-peach {
+  position: absolute;
+  top: -15vh;
+  right: -10vw;
+  width: 55vw;
+  height: 55vw;
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 196, 155, 0.35) 0%, rgba(247, 180, 140, 0.18) 45%, transparent 70%);
+  filter: blur(120px);
+  will-change: transform;
+  animation: driftPeach 22s ease-in-out infinite alternate;
+}
+
+.ambient-glow-red {
+  position: absolute;
+  bottom: 10vh;
+  left: -15vw;
+  width: 50vw;
+  height: 50vw;
+  max-width: 750px;
+  max-height: 750px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239, 108, 93, 0.28) 0%, rgba(166, 3, 4, 0.14) 40%, transparent 70%);
+  filter: blur(130px);
+  will-change: transform;
+  animation: driftRed 25s ease-in-out infinite alternate;
+}
+
+.ambient-glow-center {
+  position: absolute;
+  top: 45vh;
+  left: 30vw;
+  width: 45vw;
+  height: 45vw;
+  max-width: 650px;
+  max-height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 218, 185, 0.30) 0%, transparent 65%);
+  filter: blur(110px);
+  will-change: transform;
+  animation: driftCenter 20s ease-in-out infinite alternate;
+}
+
+@keyframes driftPeach {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-60px, 80px, 0) scale(1.08); }
+}
+
+@keyframes driftRed {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(70px, -60px, 0) scale(1.06); }
+}
+
+@keyframes driftCenter {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-40px, -50px, 0); }
+}
+
+/* ── Section Dividers ── */
+.section-divider {
+  width: min(1320px, 92vw);
+  height: 1px;
+  background: rgba(23, 16, 15, 0.1);
+  margin: 0 auto;
+  border: none;
+}
+
+/* ── Large Outline Section Number Backgrounds ── */
+.section-head,
+.section-header,
+.work-header {
+  position: relative;
+}
+
+.section-num-watermark {
+  position: absolute;
+  top: -35px;
+  right: 0;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(80px, 12vw, 160px);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(23, 16, 15, 0.08);
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+
+.section-num-watermark.section-num-dark {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ── Consistent Small Label Style (Red dot + uppercase) ── */
+.kicker,
+.section-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  text-transform: uppercase !important;
+  letter-spacing: .18em !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: var(--red, #a60304) !important;
+}
+
+.kicker::before,
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red, #a60304);
+  box-shadow: 0 0 0 4px rgba(166, 3, 4, 0.12);
+  flex-shrink: 0;
+}
+
+/* ── Slim Scrolling Ticker Strip between Services & Selected Work ── */
+.section-ticker-strip {
+  width: 100%;
+  overflow: hidden;
+  padding: 14px 0;
+  background: #151311;
+  border-top: 1px solid rgba(255, 247, 232, 0.12);
+  border-bottom: 1px solid rgba(255, 247, 232, 0.12);
+  transform: rotate(-0.5deg);
+  margin: 40px 0 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.section-ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: sectionTickerLoop 32s linear infinite;
+  font: 800 11px 'Syne', sans-serif;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(255, 247, 232, 0.65);
+}
+
+.section-ticker-track span {
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+.section-ticker-track .ticker-dot {
+  color: #ef6c5d;
+  font-style: normal;
+  font-size: 10px;
+}
+
+@keyframes sectionTickerLoop {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Mobile Performance & Accessibility ── */
+@media (max-width: 768px) {
+  .ambient-grain {
+    display: none !important;
+  }
+  .ambient-glow-peach,
+  .ambient-glow-red,
+  .ambient-glow-center {
+    filter: blur(60px) !important;
+    opacity: 0.25 !important;
+    animation: none !important;
+  }
+  .section-num-watermark {
+    font-size: 68px;
+    top: -20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow-peach,
+  .ambient-glow-red,
+  .ambient-glow-center,
+  .section-ticker-track {
+    animation: none !important;
+  }
+}

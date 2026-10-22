@@ -14,6 +14,7 @@ function Process({ Reveal }) {
     <section className="section process" id="process">
       <div className="section-inner">
         <Reveal className="section-head">
+          <span className="section-num-watermark" aria-hidden="true">04</span>
           <span className="kicker">The process</span>
           <h2>Clear thinking. Fast movement.</h2>
         </Reveal>

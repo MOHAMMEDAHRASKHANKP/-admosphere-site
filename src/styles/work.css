@@ -11,31 +11,7 @@
   margin: 20px 0;
 }
 
-/* Subtle edge blend gradients at top and bottom */
-.work-section::before,
-.work-section::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 120px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.work-section::before {
-  top: 0;
-  background: linear-gradient(to bottom, var(--cream, #f8ecd4) 0%, transparent 100%);
-  opacity: 0.22;
-}
-
-.work-section::after {
-  bottom: 0;
-  background: linear-gradient(to top, var(--cream, #f8ecd4) 0%, transparent 100%);
-  opacity: 0.22;
-}
-
-/* Subtle dark-red radial glow near the top-right behind heading */
+/* Dark-red radial glow near the top-right behind heading */
 .work-bg-glow {
   position: absolute;
   top: 5%;
@@ -43,10 +19,23 @@
   width: 550px;
   height: 550px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(160, 20, 20, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(160, 20, 20, 0.28) 0%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
+}
+
+/* Faint dark grid pattern inside the work section */
+.work-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
 .work-container {

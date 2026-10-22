@@ -207,6 +207,7 @@ function Services({
     >
       <div className="section-inner">
         <Reveal className="section-head">
+          <span className="section-num-watermark" aria-hidden="true">01</span>
           <span className="kicker">OUR SERVICES</span>
           <h2>Everything your business needs to grow.</h2>
           <p>

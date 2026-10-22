@@ -135,6 +135,7 @@ function Work({ Reveal }) {
 
         {/* ── Header ─────────────────────────────── */}
         <Reveal className="work-header">
+          <span className="section-num-watermark section-num-dark" aria-hidden="true">03</span>
           <span className="work-label">Selected Work</span>
 
           <div className="work-header-row">

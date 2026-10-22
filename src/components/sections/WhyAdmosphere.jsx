@@ -35,6 +35,7 @@ export default function WhyAdmosphere() {
     <section className="section why-admosphere">
       <div className="section-inner">
         <div className="section-header">
+          <span className="section-num-watermark" aria-hidden="true">02</span>
           <span className="section-label">OUR PRINCIPLES</span>
 
           <h2 className="section-title">
