@@ -20,6 +20,7 @@ import './styles/platforms-visual.css';
 import './services.css';
 import './styles/Why-admosphere.css';
 import './process-enhancements.css';
+import './styles/cta.css';
 
 createRoot(document.getElementById('root')).render(
   <App />

@@ -1,0 +1,42 @@
+/* ============================================================
+   CTA SECTION ("YOUR NEXT CHAPTER") — BURGUNDY BRANDING
+   ============================================================ */
+
+.cta {
+  background: #6e0008 !important; /* Deep rich burgundy */
+  background-image: radial-gradient(circle at 50% 30%, #87030e 0%, #560005 75%, #3d0003 100%) !important;
+  color: #fff2df !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-glow-blob {
+  background: radial-gradient(circle at center, rgba(239, 108, 93, 0.18) 0%, transparent 65%) !important;
+}
+
+.cta-glow-blob-2 {
+  background: radial-gradient(circle at center, rgba(166, 3, 4, 0.25) 0%, transparent 65%) !important;
+}
+
+.cta .kicker {
+  color: #f7a399 !important;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+
+.cta h2 em {
+  color: #fca5a5 !important;
+}
+
+.cta .pill.light {
+  background: #fff7e8 !important;
+  color: #6e0008 !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3) !important;
+  transition: transform .25s ease, background .25s ease, color .25s ease !important;
+}
+
+.cta .pill.light:hover {
+  background: #ffffff !important;
+  color: #87030e !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
