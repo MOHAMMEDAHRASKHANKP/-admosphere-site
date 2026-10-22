@@ -54,14 +54,13 @@ function Footer({ Reveal }) {
     <section className="cinema-footer" id="footer">
       <div className="cinema-grid" />
       <div className="cinema-aurora" />
-      <div className="cinema-bg-word">
-        ADMOSPHERE
-      </div>
 
+      {/* Tilted marquee ribbon */}
       <div className="cinema-marquee">
         <FooterMarquee />
       </div>
 
+      {/* CTA content */}
       <div className="cinema-center">
         <Reveal>
           <span className="kicker">
@@ -97,12 +96,17 @@ function Footer({ Reveal }) {
         </div>
       </div>
 
-      <div className="cinema-bottom">
+      {/* ── Grand wordmark — bottom of footer, full-width ── */}
+      <div className="cinema-wordmark" aria-hidden="true">
+        ADMOSPHERE
+      </div>
 
+      {/* Bottom bar */}
+      <div className="cinema-bottom">
         <small>
           © 2026 Admosphere. All rights reserved.
         </small>
-        
+
         <motion.button
           className="top-button"
           onClick={scrollTop}
