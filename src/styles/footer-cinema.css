@@ -1,0 +1,57 @@
+/* ============================================================
+   CINEMA FOOTER & BIG ADMOSPHERE DISPLAY ENHANCEMENTS
+   ============================================================ */
+
+.cinema-footer {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+/* Ensure the full ADMOSPHERE text is clearly visible, contained, and nicely framed */
+.cinema-bg-word {
+  position: absolute;
+  left: 50%;
+  bottom: 12px !important;
+  transform: translateX(-50%) !important;
+  width: 96vw !important;
+  text-align: center;
+  font-family: Syne, sans-serif !important;
+  font-size: clamp(38px, 12vw, 170px) !important;
+  font-weight: 900 !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.04em !important;
+  color: transparent !important;
+  -webkit-text-stroke: 1.5px rgba(255, 247, 232, 0.16) !important;
+  background: linear-gradient(180deg, rgba(255, 247, 232, 0.22) 0%, rgba(255, 247, 232, 0.04) 70%, transparent 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  z-index: 0 !important;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Ensure the bottom bar sits above and is cleanly visible */
+.cinema-bottom {
+  position: relative;
+  z-index: 2 !important;
+  margin-top: auto;
+  padding: 24px 5vw 20px !important;
+}
+
+.cinema-center {
+  padding-bottom: 40px !important;
+}
+
+@media (max-width: 800px) {
+  .cinema-bg-word {
+    font-size: 14vw !important;
+    bottom: 18px !important;
+    -webkit-text-stroke: 1px rgba(255, 247, 232, 0.18) !important;
+  }
+}
