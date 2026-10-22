@@ -99,6 +99,15 @@
   flex: 0 0 auto;
 }
 
+/* ── Tighten gap between Process and Good Questions (FAQ) ── */
+.section.process {
+  padding-bottom: 25px;
+}
+
+.section.faq {
+  padding-top: 25px;
+}
+
 @media (max-width: 800px) {
   .process .steps {
     grid-template-columns: 1fr;
