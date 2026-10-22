@@ -32,7 +32,7 @@ function Cursor() {
       setMode(target ? target.dataset.cursor : "default");
     };
 
-    window.addEventListener("pointerover", handlePointerOver);
+    window.addEventListener("pointerover", handlePointerOver, { passive: true });
 
     return () =>
       window.removeEventListener("pointerover", handlePointerOver);
@@ -50,8 +50,8 @@ function Cursor() {
       dotRef.current?.classList.remove("cursor-dot-click");
     };
 
-    window.addEventListener("pointerdown", down);
-    window.addEventListener("pointerup", up);
+    window.addEventListener("pointerdown", down, { passive: true });
+    window.addEventListener("pointerup", up, { passive: true });
 
     return () => {
       window.removeEventListener("pointerdown", down);
@@ -67,8 +67,8 @@ function Cursor() {
       if (e.key === "Tab") setVisible(false);
     };
 
-    window.addEventListener("mousemove", mouse);
-    window.addEventListener("keydown", keyboard);
+    window.addEventListener("mousemove", mouse, { passive: true });
+    window.addEventListener("keydown", keyboard, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", mouse);
@@ -104,7 +104,6 @@ function Cursor() {
               transform: hasLabel
                 ? "translateY(0) scale(1)"
                 : "translateY(4px) scale(.92)",
-              filter: hasLabel ? "blur(0)" : "blur(4px)",
             }}
           >
             {currentMode.label}
