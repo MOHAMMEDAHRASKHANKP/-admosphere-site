@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/faq.css';
 
 function GoodQuestions({ Reveal }) {
   const questions = [
@@ -17,7 +18,7 @@ function GoodQuestions({ Reveal }) {
   ];
 
   return (
-    <section className="section faq">
+    <section className="section faq" id="faq">
       <div className="section-inner">
         <Reveal className="section-head">
           <span className="kicker">Good questions</span>
@@ -28,7 +29,10 @@ function GoodQuestions({ Reveal }) {
           {questions.map((q, i) => (
             <details key={q[0]}>
               <summary>
-                <span>0{i + 1} &nbsp; {q[0]}</span>
+                <span>
+                  <strong className="faq-num">0{i + 1}</strong>
+                  <span className="faq-text">{q[0]}</span>
+                </span>
                 <b>+</b>
               </summary>
               <p>{q[1]}</p>
