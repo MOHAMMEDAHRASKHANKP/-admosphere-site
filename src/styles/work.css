@@ -3,12 +3,12 @@
    ============================================================ */
 
 .work-section {
-  padding: 160px 0;
+  padding: 80px 0 90px;
   background-color: #17100f;
   position: relative;
   overflow: hidden;
   border-radius: 40px;
-  margin: 20px 0;
+  margin: 10px 0 30px;
 }
 
 /* Dark-red radial glow near the top-right behind heading */
@@ -39,8 +39,8 @@
 }
 
 .work-container {
-  width: min(1320px, 92vw);
-  margin: auto;
+  width: min(1280px, 90vw);
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }
@@ -50,7 +50,7 @@
    ============================================================ */
 
 .work-header {
-  margin-bottom: 80px;
+  margin-bottom: 48px;
 }
 
 .work-label {
@@ -515,8 +515,9 @@
 
 @media (max-width: 768px) {
   .work-section {
-    padding: 100px 0;
+    padding: 50px 0 60px;
     border-radius: 28px;
+    margin: 10px 0 20px;
   }
 
   .work-header-row {

@@ -99,9 +99,9 @@
 
 /* ── Section Dividers ── */
 .section-divider {
-  width: min(1320px, 92vw);
+  width: min(1280px, 90vw);
   height: 1px;
-  background: rgba(23, 16, 15, 0.1);
+  background: rgba(23, 16, 15, 0.08);
   margin: 0 auto;
   border: none;
 }

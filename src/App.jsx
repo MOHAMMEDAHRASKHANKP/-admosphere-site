@@ -11,8 +11,6 @@ import Loader from "./components/ui/Loader";
 import Reveal from "./components/ui/Reveal";
 import ScrollProgress from "./components/ui/ScrollProgress";
 import { lazy, Suspense } from 'react';
-import TickerBand from "./components/ui/TickerBand";
-
 import "./styles/depth-enhancements.css";
 
 const WhyAdmosphere = lazy(() => import('./components/sections/WhyAdmosphere'));
@@ -115,8 +113,6 @@ function App() {
           <hr className="section-divider" aria-hidden="true" />
 
           <WhyAdmosphere />
-
-          <TickerBand />
 
           <Work Reveal={Reveal} />
 
