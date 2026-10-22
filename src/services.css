@@ -157,7 +157,144 @@
 }
 
 .service-atmosphere .s1 .service-glass{background:linear-gradient(145deg,rgba(255,250,238,.82),rgba(239,190,154,.43))}
-@media(max-width:800px){.service-atmosphere{padding:12px;border-radius:28px}.service-glass{min-height:310px}.service-atmosphere .bento{gap:12px}}
+/* ============================================================
+   SWIPE HINT & DOTS
+   ============================================================ */
+
+.services-swipe-hint {
+  display: none;
+}
+
+.services-dots-container {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .services-swipe-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+    font: 700 11px 'Syne', sans-serif;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--red);
+    opacity: 0.9;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .services-swipe-hint.hint-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(6px);
+  }
+
+  .services-swipe-hint .swipe-arrow {
+    font-size: 13px;
+    animation: swipeArrowNudge 1.6s ease-in-out infinite;
+  }
+
+  @keyframes swipeArrowNudge {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(4px); }
+  }
+
+  /* One-time entrance nudge */
+  .bento-nudge {
+    animation: bentoSwipeNudge 0.8s ease-in-out forwards;
+  }
+
+  @keyframes bentoSwipeNudge {
+    0%   { transform: translateX(0); }
+    38%  { transform: translateX(-40px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* Native CSS scroll-snap only — no JS interference, zero flicker */
+  .service-atmosphere {
+    padding: 16px 0 20px !important;
+    border-radius: 28px;
+    overflow: visible;
+  }
+
+  .service-atmosphere .bento {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain !important;
+    scrollbar-width: none !important;
+    gap: 14px !important;
+    padding: 0 16px 16px !important;
+    margin: 0 !important;
+  }
+
+  .service-atmosphere .bento::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* 84vw wide card with peek effect */
+  .service-atmosphere .service,
+  .service-atmosphere .service-reveal-wrapper,
+  .service {
+    flex: 0 0 84vw !important;
+    width: 84vw !important;
+    max-width: 84vw !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: normal !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    will-change: transform !important;
+  }
+
+  /* Optimized mobile card: remove heavy backdrop-filter & heavy shadow to prevent GPU redraw blink */
+  .service-glass {
+    min-height: 480px !important;
+    height: 100% !important;
+    padding: 24px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: linear-gradient(145deg, #fff9ee, #faebd7) !important;
+    box-shadow: 0 8px 24px rgba(65, 31, 18, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    will-change: transform !important;
+  }
+
+  .service-glass::after {
+    display: none !important;
+  }
+
+  /* Progress Dots */
+  .services-dots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .service-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    border: none;
+    padding: 0;
+    background: rgba(166, 3, 4, 0.22);
+    cursor: pointer;
+    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+  }
+
+  .service-dot.active {
+    width: 22px;
+    background: var(--red);
+  }
+}
+
 .service-glass *{
     backface-visibility:hidden;
 }
