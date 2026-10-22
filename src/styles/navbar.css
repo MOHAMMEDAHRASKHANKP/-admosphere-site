@@ -69,15 +69,14 @@
 }
 
 /* ============================================================
-   NAV LINKS — centered in the flex row
+   NAV LINKS — pushed to right side directly left of CTA button
    ============================================================ */
 
 .navlinks {
-  flex: 1;
+  margin-left: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 44px;
+  gap: 32px;
 }
 
 .navlinks a {
@@ -118,7 +117,7 @@
   min-width: unset;
   padding: 0 22px;
   font-size: 13px;
-  margin-left: 12px;
+  margin-left: 28px;
 }
 
 /* ============================================================
