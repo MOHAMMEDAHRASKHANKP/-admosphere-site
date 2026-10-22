@@ -96,7 +96,66 @@
     align-items:flex-start;
     margin-bottom:20px;
 }.service-tags span{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.4);border:1px solid rgba(166,3,4,.1);color:#63584e;font-size:9px;font-weight:600;letter-spacing:.04em}
-.service-foot{padding-top:17px;border-top:1px solid rgba(166,3,4,.11)}.service-foot strong{font:600 10px Syne;letter-spacing:.08em;color:var(--red);text-transform:uppercase}.service-atmosphere .service-foot a{display:grid;place-items:center;width:37px;height:37px;border-radius:50%;background:var(--red);color:white;font-size:16px;margin:0;box-shadow:0 8px 18px rgba(166,3,4,.24);transition:.25s}.service-atmosphere .service-foot a:hover{transform:rotate(45deg) scale(1.08);background:var(--bright)}
+.service-foot{padding-top:17px;border-top:1px solid rgba(166,3,4,.11)}.service-foot strong{font:600 10px Syne;letter-spacing:.08em;color:var(--red);text-transform:uppercase}
+
+/* ============================================================
+   CLICKABLE SERVICE CARDS & GET A QUOTE PILL BUTTON
+   ============================================================ */
+
+.service-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  height: 100%;
+}
+
+.service-glass {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card-link:hover .service-glass {
+    transform: translateY(-6px);
+    border-color: rgba(166, 3, 4, 0.45);
+    box-shadow: 
+      inset 0 1px 0 #fff,
+      0 20px 45px rgba(166, 3, 4, 0.12),
+      0 12px 28px rgba(65, 31, 18, 0.10);
+  }
+}
+
+.service-quote-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff7e8;
+  font: 600 11px 'Syne', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(166, 3, 4, 0.28);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.service-pill-arrow {
+  font-size: 14px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card-link:hover .service-quote-pill {
+    background: var(--bright);
+  }
+
+  .service-card-link:hover .service-pill-arrow {
+    transform: translateX(4px);
+  }
+}
+
 .service-atmosphere .s1 .service-glass{background:linear-gradient(145deg,rgba(255,250,238,.82),rgba(239,190,154,.43))}
 @media(max-width:800px){.service-atmosphere{padding:12px;border-radius:28px}.service-glass{min-height:310px}.service-atmosphere .bento{gap:12px}}
 .service-glass *{

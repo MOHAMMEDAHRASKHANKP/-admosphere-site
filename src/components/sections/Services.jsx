@@ -10,109 +10,103 @@ function ServiceCard({
   index,
   Reveal,
 }) {
+  const mailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=admosphere.digital@gmail.com&su=${encodeURIComponent(`Inquiry about ${service.title} (${service.tags.join(', ')})`)}`;
+
   return (
     <Reveal className={`service s${index + 1}`}>
       <Magnetic
-  strength={0}
-  tilt={2}
-  scale={1.003}
->
-        <motion.div
-          className="service-glass"
-          style={{
-            transformStyle: "preserve-3d",
-          }}
+        strength={0}
+        tilt={2}
+        scale={1.003}
+      >
+        <a
+          href={mailUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="service-card-link"
+          aria-label={`Get a quote for ${service.title}`}
         >
-          <div
-            className="service-top"
+          <motion.div
+            className="service-glass"
             style={{
-              transform: "translateZ(42px)",
+              transformStyle: "preserve-3d",
             }}
           >
-            <span className="number">
-              {service.n} / CAPABILITY
-            </span>
-
-            <motion.span
-              className="symbol"
-              whileHover={{
-                rotate: 12,
-                scale: 1.12,
-                y: -4,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 18,
+            <div
+              className="service-top"
+              style={{
+                transform: "translateZ(42px)",
               }}
             >
-              {service.icon}
-            </motion.span>
-          </div>
+              <span className="number">
+                {service.n} / CAPABILITY
+              </span>
 
-          <div
-            className="service-copy"
-            style={{
-              transform: "translateZ(60px)",
-            }}
-          >
-            <h3>{service.title}</h3>
-
-            <p>{service.copy}</p>
-          </div>
-
-          <div
-            className="service-tags"
-            style={{
-              transform: "translateZ(52px)",
-            }}
-          >
-            {service.tags.map((tag) => (
               <motion.span
-                key={tag}
+                className="symbol"
                 whileHover={{
-                  y: -3,
-                  scale: 1.05,
+                  rotate: 12,
+                  scale: 1.12,
+                  y: -4,
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 260,
+                  stiffness: 300,
+                  damping: 18,
                 }}
               >
-                {tag}
+                {service.icon}
               </motion.span>
-            ))}
-          </div>
+            </div>
 
-          <div
-            className="service-foot"
-            style={{
-              transform: "translateZ(68px)",
-            }}
-          >
-            <strong>{service.result}</strong>
-
-            <motion.a
-              href={`https://mail.google.com/mail/?view=cm&fs=1&to=admosphere.digital@gmail.com&su=${encodeURIComponent(`Inquiry about ${service.title} (${service.tags.join(', ')})`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Inquire about ${service.title}`}
-              whileHover={{
-                rotate: 45,
-                scale: 1.15,
-              }}
-              whileTap={{
-                scale: 0.92,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 320,
+            <div
+              className="service-copy"
+              style={{
+                transform: "translateZ(60px)",
               }}
             >
-              <FiArrowUpRight />
-            </motion.a>
-          </div>
-        </motion.div>
+              <h3>{service.title}</h3>
+
+              <p>{service.copy}</p>
+            </div>
+
+            <div
+              className="service-tags"
+              style={{
+                transform: "translateZ(52px)",
+              }}
+            >
+              {service.tags.map((tag) => (
+                <motion.span
+                  key={tag}
+                  whileHover={{
+                    y: -3,
+                    scale: 1.05,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                  }}
+                >
+                  {tag}
+                </motion.span>
+              ))}
+            </div>
+
+            <div
+              className="service-foot"
+              style={{
+                transform: "translateZ(68px)",
+              }}
+            >
+              <strong>{service.result}</strong>
+
+              <span className="service-quote-pill">
+                Get a quote <FiArrowUpRight className="service-pill-arrow" />
+              </span>
+            </div>
+          </motion.div>
+        </a>
       </Magnetic>
     </Reveal>
   );
@@ -151,16 +145,6 @@ function Services({
                 Reveal={Reveal}
               />
             ))}
-          </div>
-          
-          <div className="swipe-hint">
-            <span>Swipe to explore</span>
-            <motion.span 
-              animate={{ x: [0, 5, 0] }} 
-              transition={{ repeat: Infinity, duration: 1.5 }}
-            >
-              →
-            </motion.span>
           </div>
         </div>
       </div>
