@@ -58,9 +58,109 @@
 
 .why-left {
   position: sticky;
-  top: 130px;
+  top: 110px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ============================================================
+   IMPACT CARD — fills bottom void with brand authority
+   ============================================================ */
+
+.why-impact-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 24px 26px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 16px 40px rgba(87, 38, 24, 0.08),
+    inset 0 1px 0 #fff;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-sizing: border-box;
+}
+
+.why-impact-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.why-impact-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a60304;
+  box-shadow: 0 0 0 4px rgba(166, 3, 4, 0.14);
+}
+
+.why-impact-kicker {
+  font-family: Syne, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #a60304;
+}
+
+.why-impact-quote {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #4a423a;
+  margin: 0 0 16px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.why-impact-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(166, 3, 4, 0.08);
+}
+
+.why-impact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #151311;
+}
+
+.why-impact-badge svg {
+  color: #a60304;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.why-impact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #a60304;
+  text-decoration: none;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.why-impact-link:hover {
+  transform: translateX(3px);
+  color: #d12121;
+}
+
+.why-impact-link svg {
+  font-size: 15px;
 }
 
 /* ============================================================
