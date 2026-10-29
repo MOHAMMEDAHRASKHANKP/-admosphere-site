@@ -1,87 +1,44 @@
 /* ==========================================
-   PREMIUM HIGH-PERFORMANCE CURSOR
+   MINIMAL SOLID RED DOT MOUSE CURSOR
 ========================================== */
 
-@media (min-width: 901px) {
-  html,
-  body,
-  body * {
-    cursor: none !important;
-  }
+/* Keep normal mouse cursor visible everywhere */
+html,
+body {
+  cursor: default;
 }
 
-.cursor-ring,
-.cursor-dot {
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer;
+}
+
+/* Custom Red Dot Cursor */
+.custom-cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  pointer-events: none;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-.cursor-ring {
-  z-index: 999998;
-}
-
-.cursor-ring-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  will-change: transform;
-  transition:
-    border-color 0.25s ease,
-    background-color 0.25s ease;
-}
-
-.cursor-dot {
-  z-index: 999999;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  pointer-events: none;
+  background-color: #d12121;
+  pointer-events: none !important;
+  z-index: 9999999;
   will-change: transform;
-  transition:
-    opacity 0.2s ease,
-    width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.25s ease;
-}
-
-.cursor-ring {
-  transition:
-    width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.2s ease;
-}
-
-.cursor-label {
-  color: #f8ecd4;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  white-space: nowrap;
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
   user-select: none;
-  pointer-events: none;
-  will-change: transform, opacity;
-  transition:
-    opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (max-width: 900px) {
+/* Disappear on touch / mobile devices where there is no mouse cursor */
+@media (hover: none) or (pointer: coarse), (max-width: 900px) {
+  .custom-cursor-dot,
   .cursor-ring,
   .cursor-dot {
     display: none !important;
-  }
-
-  html,
-  body,
-  body * {
-    cursor: auto !important;
   }
 }
