@@ -411,3 +411,160 @@
   .principle h3 { font-size: 22px; }
   .principle p { font-size: 14px; }
 }
+
+/* ============================================================
+   MOBILE STAT CARDS — INTERACTIVE POLISH (< 700px)
+   All rules here are mobile-only and do NOT affect desktop.
+   ============================================================ */
+
+/* --- Floating animations (idle, staggered) --- */
+@media (max-width: 700px) {
+  /* Disable framer's inline transform interference during float */
+  .mob-stats-visual .stat-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 14px 16px;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    will-change: auto;
+  }
+
+  /* 5th card: full-row centered, same width as others */
+  .mob-stats-visual .stat-card-5 {
+    grid-column: 1 / -1;
+    max-width: 200px;
+    justify-self: center;
+  }
+
+  /* --- Moving highlight overlay (set by JS) --- */
+  .mob-card-highlight {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+    transition: background 0.08s ease;
+  }
+
+  /* --- Shimmer sweep (fires after count-up) --- */
+  .mob-card-shimmer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+    background-position: -200% 0;
+    opacity: 0;
+  }
+
+  /* Parent-class driven shimmer (on section visible) */
+  .mob-stats-visible .mob-card-shimmer {
+    animation: mobCardShimmer 0.7s ease forwards;
+  }
+
+  /* JS class driven shimmer (on tap / count-up end) */
+  .mob-card-shimmer.shimmer-run {
+    animation: mobCardShimmer 0.7s ease forwards;
+  }
+
+  @keyframes mobCardShimmer {
+    0%   { opacity: 0; background-position: -200% 0; }
+    10%  { opacity: 1; }
+    100% { opacity: 0; background-position: 200% 0; }
+  }
+
+  /* --- Idle float per-card (different delays, opposite for L/R) --- */
+  .mob-stats-visible .stat-card-1 { animation: mobFloat-left  4.4s ease-in-out 0s    infinite; }
+  .mob-stats-visible .stat-card-2 { animation: mobFloat-right 5.0s ease-in-out 0.4s  infinite; }
+  .mob-stats-visible .stat-card-3 { animation: mobFloat-left  4.8s ease-in-out 0.8s  infinite; }
+  .mob-stats-visible .stat-card-4 { animation: mobFloat-right 5.2s ease-in-out 1.2s  infinite; }
+  .mob-stats-visible .stat-card-5 { animation: mobFloat-up    4.6s ease-in-out 1.6s  infinite; }
+
+  @keyframes mobFloat-left  { 0%,100%{transform:translateY(0)}    50%{transform:translateY(-4px)} }
+  @keyframes mobFloat-right { 0%,100%{transform:translateY(0)}    50%{transform:translateY(-3px)} }
+  @keyframes mobFloat-up    { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-3.5px) scale(1)} }
+
+  /* --- Tap pulse: red dot expands once --- */
+  .stat-pulse-tap {
+    animation: pulseTap 0.55s ease-out forwards !important;
+  }
+
+  @keyframes pulseTap {
+    0%   { box-shadow: 0 0 0 0   rgba(166, 3, 4, 0.7); }
+    60%  { box-shadow: 0 0 0 10px rgba(166, 3, 4, 0);  }
+    100% { box-shadow: 0 0 0 0   rgba(166, 3, 4, 0);   }
+  }
+
+  /* --- Badge on 12M+ card --- */
+  .mob-badge-wrap {
+    position: absolute;
+    bottom: -14px;
+    right: -12px;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mob-badge-ring {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(166, 3, 4, 0.28);
+    animation: badgeSpin 12s linear infinite !important;
+    transition: animation-duration 0.3s ease;
+  }
+
+  /* Badge ring spins faster on tap */
+  .mob-stats-visible .stat-card-2:active .mob-badge-ring {
+    animation-duration: 2s !important;
+  }
+
+  /* stat-value: tabular nums so width is stable */
+  .stat-value {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Ensure card inner content is above overlay layers */
+  .stat-icon, .stat-value, .stat-label, .stat-pulse {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* No horizontal overflow from tilt */
+  .mob-stats-visual {
+    overflow: visible;
+  }
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION: disable all extras
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .mob-stats-visible .stat-card-1,
+  .mob-stats-visible .stat-card-2,
+  .mob-stats-visible .stat-card-3,
+  .mob-stats-visible .stat-card-4,
+  .mob-stats-visible .stat-card-5 {
+    animation: none !important;
+  }
+  .mob-card-shimmer {
+    display: none !important;
+  }
+  .mob-badge-ring {
+    animation: none !important;
+  }
+}
