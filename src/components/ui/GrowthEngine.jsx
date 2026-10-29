@@ -12,13 +12,25 @@ const stats = [
     value: '12M+',
     label: 'Impressions Generated',
     icon: '👁️',
-    delay: 0.15,
+    delay: 0.12,
   },
   {
     value: '3.4×',
     label: 'Organic Growth',
     icon: '🌱',
-    delay: 0.28,
+    delay: 0.24,
+  },
+  {
+    value: '20X',
+    label: 'Average ROAS',
+    icon: '🚀',
+    delay: 0.36,
+  },
+  {
+    value: '100+',
+    label: 'Brands Scaled',
+    icon: '🤝',
+    delay: 0.48,
   },
 ];
 
@@ -35,7 +47,7 @@ export default function GrowthEngine() {
           className={`stat-card stat-card-${i + 1}`}
           initial={{ opacity: 0, scale: 0.88, y: 24 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.25 }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{
             duration: 0.68,
             delay: stat.delay,
@@ -50,7 +62,7 @@ export default function GrowthEngine() {
         </motion.div>
       ))}
 
-      {/* Center badge */}
+      {/* Center badge attached to 12M+ card */}
       <div className="stats-center-badge">
         <div className="stats-badge-ring" />
         <div className="stats-badge-inner">

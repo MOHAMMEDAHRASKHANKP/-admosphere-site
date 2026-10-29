@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiArrowUpRight, FiCheck } from "react-icons/fi";
 import "../../styles/Why-admosphere.css";
 import GrowthEngine from "../ui/GrowthEngine";
+
 const principles = [
   {
     number: "01",
@@ -53,37 +53,6 @@ export default function WhyAdmosphere() {
         <div className="why-layout">
           <div className="why-left">
             <GrowthEngine />
-
-            <motion.div
-              className="why-impact-card"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.65, delay: 0.2 }}
-            >
-              <div className="why-impact-header">
-                <span className="why-impact-dot" />
-                <span className="why-impact-kicker">THE ADMOSPHERE STANDARD</span>
-              </div>
-
-              <p className="why-impact-quote">
-                "We don't build to show. We build to turn brand presence into compounding growth."
-              </p>
-
-              <div className="why-impact-badges">
-                <span className="why-impact-badge">
-                  <FiCheck /> Dedicated Senior Team
-                </span>
-                <span className="why-impact-badge">
-                  <FiCheck /> Revenue-Driven ROAS
-                </span>
-              </div>
-
-              <a href="#work" className="why-impact-link">
-                <span>Explore Client Results</span>
-                <FiArrowUpRight />
-              </a>
-            </motion.div>
           </div>
 
           <div className="why-right">

@@ -63,124 +63,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
 }
 
 /* ============================================================
-   IMPACT CARD — fills bottom void with brand authority
-   ============================================================ */
-
-.why-impact-card {
-  width: 100%;
-  max-width: 380px;
-  padding: 24px 26px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 16px 40px rgba(87, 38, 24, 0.08),
-    inset 0 1px 0 #fff;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-sizing: border-box;
-}
-
-.why-impact-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.why-impact-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #a60304;
-  box-shadow: 0 0 0 4px rgba(166, 3, 4, 0.14);
-}
-
-.why-impact-kicker {
-  font-family: Syne, sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: #a60304;
-}
-
-.why-impact-quote {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: #4a423a;
-  margin: 0 0 16px;
-  font-style: italic;
-  font-weight: 500;
-}
-
-.why-impact-badges {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 18px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(166, 3, 4, 0.08);
-}
-
-.why-impact-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #151311;
-}
-
-.why-impact-badge svg {
-  color: #a60304;
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-.why-impact-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .04em;
-  color: #a60304;
-  text-decoration: none;
-  transition: transform 0.25s ease, color 0.25s ease;
-}
-
-.why-impact-link:hover {
-  transform: translateX(3px);
-  color: #d12121;
-}
-
-.why-impact-link svg {
-  font-size: 15px;
-}
-
-/* ============================================================
-   STATS VISUAL — replaces the orbit rings
+   STATS VISUAL — 5 FLOATING STAT CARDS
    ============================================================ */
 
 .stats-visual {
   position: relative;
   width: 380px;
-  height: 440px;
+  height: 720px;
 }
 
 /* Ambient glow behind the cards */
 .stats-bg-glow {
   position: absolute;
-  inset: 15%;
+  inset: 10% 5%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(166,3,4,.1), transparent 70%);
-  filter: blur(38px);
+  background: radial-gradient(circle, rgba(166,3,4,.12), transparent 70%);
+  filter: blur(48px);
   pointer-events: none;
 }
 
@@ -192,51 +93,85 @@
   position: absolute;
   padding: 18px 22px;
   border-radius: 20px;
-  background: rgba(255,255,255,.8);
-  border: 1px solid rgba(255,255,255,.98);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.98);
   box-shadow:
-    0 16px 48px rgba(0,0,0,.08),
+    0 16px 48px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 #fff;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  min-width: 172px;
+  min-width: 175px;
   cursor: default;
   user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Position + individual float animation per card */
+.stat-card:hover {
+  border-color: rgba(166, 3, 4, 0.28);
+  box-shadow:
+    0 20px 50px rgba(166, 3, 4, 0.12),
+    inset 0 1px 0 #fff;
+}
+
+/* Position + individual float animation per card with staggered delay */
 .stat-card-1 {
-  top: 20px;
-  right: 0;
-  animation: statFloat1 5s ease-in-out infinite;
+  top: 10px;
+  right: 8px;
+  animation: statFloat1 5.2s ease-in-out infinite;
+  animation-delay: 0s;
 }
 
 .stat-card-2 {
-  top: 50%;
+  top: 155px;
   left: 0;
-  transform: translateY(-50%);
-  animation: statFloat2 6.5s ease-in-out infinite;
+  animation: statFloat2 6s ease-in-out infinite;
+  animation-delay: 0.6s;
 }
 
 .stat-card-3 {
-  bottom: 20px;
-  right: 24px;
-  animation: statFloat3 4.8s ease-in-out infinite;
+  top: 300px;
+  right: 14px;
+  animation: statFloat3 5s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.stat-card-4 {
+  top: 445px;
+  left: 6px;
+  animation: statFloat4 5.6s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+.stat-card-5 {
+  top: 585px;
+  right: 8px;
+  animation: statFloat5 4.8s ease-in-out infinite;
+  animation-delay: 2.4s;
 }
 
 @keyframes statFloat1 {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-12px); }
+  50%       { transform: translateY(-11px); }
 }
 
 @keyframes statFloat2 {
-  0%, 100% { transform: translateY(-50%); }
-  50%       { transform: translateY(calc(-50% - 10px)); }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
 }
 
 @keyframes statFloat3 {
   0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes statFloat4 {
+  0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-9px); }
+}
+
+@keyframes statFloat5 {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-11px); }
 }
 
 /* Card inner elements */
@@ -277,18 +212,18 @@
 }
 
 @keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(166,3,4,.42); }
-  50%       { box-shadow: 0 0 0 7px rgba(166,3,4,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(166, 3, 4, 0.42); }
+  50%       { box-shadow: 0 0 0 7px rgba(166, 3, 4, 0); }
 }
 
 /* ============================================================
-   CENTER BADGE
+   CENTER BADGE (attached to 12M+ card)
    ============================================================ */
 
 .stats-center-badge {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 210px;
+  left: 185px;
   transform: translate(-50%, -50%);
   z-index: 5;
 }
@@ -297,7 +232,7 @@
   position: absolute;
   inset: -14px;
   border-radius: 50%;
-  border: 1.5px dashed rgba(166,3,4,.22);
+  border: 1.5px dashed rgba(166, 3, 4, 0.22);
   animation: badgeSpin 22s linear infinite;
 }
 
@@ -310,9 +245,9 @@
   height: 80px;
   border-radius: 50%;
   background: linear-gradient(135deg, #fff, #fff7e8);
-  border: 1px solid rgba(166,3,4,.16);
+  border: 1px solid rgba(166, 3, 4, 0.16);
   box-shadow:
-    0 8px 32px rgba(166,3,4,.1),
+    0 8px 32px rgba(166, 3, 4, 0.1),
     inset 0 1px 0 #fff;
   display: flex;
   flex-direction: column;
@@ -348,7 +283,7 @@
 
 .principle {
   padding: 48px 0;
-  border-bottom: 1px solid rgba(0,0,0,.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: transform .35s ease;
 }
 
@@ -387,7 +322,7 @@
 @media (max-width: 1024px) {
   .why-layout {
     grid-template-columns: 1fr;
-    gap: 70px;
+    gap: 60px;
   }
 
   .why-left {
@@ -396,15 +331,13 @@
   }
 
   .stats-visual {
-    width: 320px;
-    height: 360px;
+    width: 360px;
+    height: 700px;
     margin: auto;
   }
 
-  .stat-value    { font-size: 26px; }
-  .stat-card     { min-width: 148px; }
-  .stat-card-1   { right: 6px; }
-  .stat-card-3   { right: 16px; }
+  .stat-value    { font-size: 28px; }
+  .stat-card     { min-width: 160px; }
 
   .principle h3  { font-size: 26px; }
   .principle p   { font-size: 15px; }
@@ -418,16 +351,41 @@
   .principle { padding: 36px 0; }
 
   .stats-visual {
+    position: relative;
     width: 100%;
-    max-width: 280px;
-    height: 310px;
-    margin: 0 auto;
+    max-width: 360px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 0 auto 30px;
   }
 
-  .stat-card     { min-width: 136px; padding: 14px 16px; }
-  .stat-value    { font-size: 22px; }
+  .stat-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 14px 16px;
+    animation: none !important;
+  }
+
+  .stat-card-5 {
+    grid-column: 1 / -1;
+    max-width: 200px;
+    justify-self: center;
+  }
+
+  .stat-value    { font-size: 24px; }
   .stat-icon     { font-size: 18px; margin-bottom: 8px; }
-  .stat-card-2   { left: -4px; }
+
+  .stats-center-badge {
+    display: none;
+  }
 
   .section-title br { display: none; }
 }
@@ -438,14 +396,18 @@
 
 @media (max-width: 480px) {
   .stats-visual {
-    height: 260px;
-    transform: scale(0.9);
+    max-width: 100%;
+    gap: 10px;
   }
 
-  .stat-card-1 { right: -10px; top: 10px; }
-  .stat-card-3 { right: 0px; bottom: 10px; }
-  .stat-card-2 { left: -10px; }
-  
+  .stat-card {
+    padding: 12px 14px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
   .principle h3 { font-size: 22px; }
   .principle p { font-size: 14px; }
 }
