@@ -1,55 +1,60 @@
 import React, { useRef, useEffect } from "react";
 
 function Cursor() {
-  const dotRef = useRef(null);
+  const cursorRef = useRef(null);
 
   useEffect(() => {
-    // Only run on desktop devices with a mouse / fine pointer
+    // Disable on touch devices
     if (typeof window === "undefined") return;
-    const isFinePointer = window.matchMedia("(pointer: fine)").matches;
-    if (!isFinePointer) return;
+    const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    if (isTouch) return;
 
-    const dot = dotRef.current;
-    if (!dot) return;
+    const cursor = cursorRef.current;
+    if (!cursor) return;
 
-    let isVisible = false;
+    let hasMoved = false;
 
-    const handleMouseMove = (e) => {
-      if (!isVisible) {
-        isVisible = true;
-        dot.style.opacity = "1";
+    const handlePointerMove = (e) => {
+      if (!hasMoved) {
+        hasMoved = true;
+        cursor.style.display = "block";
       }
-      // Instant 1:1 real-time positioning with zero lag
-      dot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+      cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
     };
 
-    const handleMouseLeave = () => {
-      isVisible = false;
-      dot.style.opacity = "0";
+    const handlePointerLeave = () => {
+      cursor.style.display = "none";
     };
 
-    const handleMouseEnter = () => {
-      isVisible = true;
-      dot.style.opacity = "1";
+    const handlePointerEnter = () => {
+      if (hasMoved) {
+        cursor.style.display = "block";
+      }
     };
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    document.addEventListener("mouseleave", handleMouseLeave, { passive: true });
-    document.addEventListener("mouseenter", handleMouseEnter, { passive: true });
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    document.addEventListener("mouseleave", handlePointerLeave, { passive: true });
+    document.addEventListener("mouseenter", handlePointerEnter, { passive: true });
+    window.addEventListener("blur", handlePointerLeave, { passive: true });
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      document.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("pointermove", handlePointerMove);
+      document.removeEventListener("mouseleave", handlePointerLeave);
+      document.removeEventListener("mouseenter", handlePointerEnter);
+      window.removeEventListener("blur", handlePointerLeave);
     };
   }, []);
 
   return (
     <div
-      ref={dotRef}
-      className="custom-cursor-dot"
+      ref={cursorRef}
+      className="custom-cursor"
+      style={{ display: "none" }}
       aria-hidden="true"
-    />
+    >
+      <div className="custom-cursor-ring" />
+      <div className="custom-cursor-dot" />
+    </div>
   );
 }
 

@@ -1,44 +1,63 @@
 /* ==========================================
-   MINIMAL SOLID RED DOT MOUSE CURSOR
+   CUSTOM ZERO-LAG CURSOR (DOT + RING)
 ========================================== */
 
-/* Keep normal mouse cursor visible everywhere */
-html,
-body {
-  cursor: default;
+/* Hide default system cursor on the whole page, including links, buttons, inputs */
+*,
+*::before,
+*::after {
+  cursor: none !important;
 }
 
-a,
-button,
-[role="button"],
-input[type="submit"],
-input[type="button"] {
-  cursor: pointer;
-}
-
-/* Custom Red Dot Cursor */
-.custom-cursor-dot {
+/* Custom cursor wrapper */
+.custom-cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #d12121;
+  width: 36px;
+  height: 36px;
   pointer-events: none !important;
-  z-index: 9999999;
+  z-index: 999999;
   will-change: transform;
   transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.15s ease;
   user-select: none;
 }
 
-/* Disappear on touch / mobile devices where there is no mouse cursor */
-@media (hover: none) or (pointer: coarse), (max-width: 900px) {
-  .custom-cursor-dot,
-  .cursor-ring,
-  .cursor-dot {
+/* 36px diameter, 2px solid #E53935, transparent fill, centered on dot */
+.custom-cursor-ring {
+  position: absolute;
+  inset: 0;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #E53935;
+  border-radius: 50%;
+  background: transparent;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* Small solid red dot (8px, color #E53935) perfectly centered */
+.custom-cursor-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #E53935;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Disable on touch devices and restore normal cursor */
+@media (hover: none) and (pointer: coarse) {
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+
+  .custom-cursor {
     display: none !important;
   }
 }
