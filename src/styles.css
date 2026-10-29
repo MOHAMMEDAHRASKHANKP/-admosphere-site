@@ -175,30 +175,7 @@
     perspective:2200px;
     position:relative;
 }
-@media (max-width:1024px){
-    .service-atmosphere .bento{
-        grid-template-columns:repeat(2,1fr) !important;
-    }
-}
-
-@media (max-width:768px){
-    .service-atmosphere .bento{
-        display: flex !important;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 20px;
-        gap: 16px;
-        scrollbar-width: none;
-    }
-    .service-atmosphere .bento::-webkit-scrollbar {
-        display: none;
-    }
-    .service {
-        min-width: 82vw;
-        scroll-snap-align: center;
-        flex-shrink: 0;
-    }
-}
+/* bento responsive rules managed in services.css */
 
 /* ==============================
    Custom Scrollbar
@@ -275,22 +252,7 @@
     grid-template-columns: 1fr !important;
     gap: 16px;
   }
-  .bento {
-    display: flex !important;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px !important;
-    padding-bottom: 12px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .bento::-webkit-scrollbar {
-    display: none;
-  }
-  .bento .service {
-    flex: 0 0 82vw !important;
-    scroll-snap-align: center;
-  }
+  /* bento styles managed in services.css */
   .cinema-marquee {
     top: 30px !important;
   }

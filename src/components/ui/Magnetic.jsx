@@ -119,7 +119,13 @@ rotateX.set(-(py - 0.5) * 2);
 
   return (
     <div
-      style={{ perspective: 2500}}
+      style={{
+        perspective: 2500,
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        flex: "1 1 auto",
+      }}
       onMouseEnter={handleEnter}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
@@ -128,7 +134,11 @@ rotateX.set(-(py - 0.5) * 2);
         className={className}
         style={{
           position: "relative",
-          overflow: "hidden",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          flex: "1 1 auto",
+          borderRadius: 25,
 
           x: sx,
           y: sy,
@@ -149,7 +159,7 @@ rotateX.set(-(py - 0.5) * 2);
             position: "absolute",
             inset: 0,
             pointerEvents: "none",
-            borderRadius: "inherit",
+            borderRadius: 25,
             background: glare,
             mixBlendMode: "screen",
             opacity: 0.3,
